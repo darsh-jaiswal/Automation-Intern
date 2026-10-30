@@ -7,3 +7,7 @@ node_modules/
 *.log
 *.tmp
 ~$*
+.next/
+.vercel/
+test-results/
+playwright-report/

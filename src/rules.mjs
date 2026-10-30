@@ -28,6 +28,8 @@ export function inspect(contact, sessions) {
   if (!sessions.some(s => s.tool_input && s.tool_output)) flags.push('missing_tool_context');
   if (injection) flags.push('prompt_injection');
   if (sessions.length > 1) flags.push('repeat_visitor');
+  if (sessions.some(session=>session.raw?.contact_details_conflict)) flags.push('contact_details_conflict');
+  if (sessions.some(session=>session.source_tool==='linkedin_hook_grader'&&session.raw?.hook_result&&session.raw.hook_result.status!=='ready')) flags.push('incomplete_hook_result');
   if (/ghostwriter|i write linkedin posts for founders/i.test(context)) flags.push('service_overlap_review');
   const rolePoints = /founder|co-founder|\bCEO\b|chief|managing director|VP sales|head of sales/i.test(role) ? 3 : /manager|director|head|vice president/i.test(role) ? 2 : 0;
   return { flags, test, jobSeeker, injection, rolePoints, context, excluded: test || jobSeeker, reason: test ? 'Explicit test submission.' : jobSeeker ? 'Job-seeking or student use case, rather than buying a growth service.' : '' };
@@ -48,7 +50,8 @@ export function score(contact, sessions, analysis = null) {
   const finalScore = Math.min(total,cap);
   if(cap<10){points.total_before_cap=total;points.maximum_for_context=cap;}
   const capReason = finalScore<total ? analysis?.business_type === 'd2c' ? ' Consumer-facing context is capped at Warm.' : analysis?.need === 'none' ? ' No relevant service need: capped at Not a fit.' : ' Possible need only: capped at Warm.' : '';
-  return { score: finalScore, tier: finalScore >= 8 ? 'hot' : finalScore >= 5 ? 'warm' : 'not_a_fit', service: analysis?.service || null, points, reason: (analysis?.reason || 'Provisional rule score. Business need cannot be assessed without usable context and AI.')+capReason, checks };
+  const reason=checks.flags.includes('contact_details_conflict')?'Public contact details conflict with the saved record. Held for review.':checks.flags.includes('incomplete_hook_result')?'Hook rewrites did not complete. Session retained and held for review.':analysis?.reason||'Provisional rule score. Business need cannot be assessed without usable context and AI.';
+  return { score: finalScore, tier: finalScore >= 8 ? 'hot' : finalScore >= 5 ? 'warm' : 'not_a_fit', service: analysis?.service || null, points, reason: reason+capReason, checks };
 }
 
 export function contextFor(sessions) {

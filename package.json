@@ -13,7 +13,9 @@
     "run": "node src/cli.mjs run",
     "status": "node src/cli.mjs status",
     "test": "node --test tests/*.test.mjs",
-    "notes": "node scripts/notes.mjs"
+    "notes": "node scripts/notes.mjs",
+    "relay": "node scripts/hook-relay.mjs",
+    "usage": "node scripts/usage-report.mjs"
   },
   "dependencies": {
     "csv-parse": "^6.1.0",

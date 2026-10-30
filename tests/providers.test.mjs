@@ -16,11 +16,11 @@ test('Anthropic truncation/refusal is a failure, not an accepted draft', async t
   t.mock.method(globalThis,'fetch',async()=>new Response(JSON.stringify({stop_reason:'max_tokens',content:[{type:'text',text:'{}'}]}),{status:200}));
   await assert.rejects(new Anthropic({anthropicKey:'test-key',model:'test-model'}).generate('Check',{}, {type:'OBJECT',properties:{}}),/incomplete/);
 });
-test('assessment schema constrains evidence to actual session values',async t=>{
+test('assessment schema selects source IDs and code copies exact multiline evidence',async t=>{
   let schema;
-  t.mock.method(globalThis,'fetch',async(_url,options)=>{schema=JSON.parse(options.body).output_config.format.schema;return new Response(JSON.stringify({stop_reason:'end_turn',content:[{type:'text',text:JSON.stringify({business_type:'b2b',need:'possible',service:'cold_email',reason:'The visitor describes a business buyer.',input_evidence:schema.properties.input_evidence.enum[0],output_evidence:schema.properties.output_evidence.enum[0]})}]}),{status:200});});
-  const ai=new Anthropic({anthropicKey:'test-key',model:'test-model'}),sessions=[{tool_input:'CNC-machined parts for electric vehicle makers',tool_output:'Competitor gaps: long lead times'}];
-  const result=await ai.analyse({first_name:'Test'},sessions);assert.deepEqual(schema.properties.input_evidence.enum,[sessions[0].tool_input]);assert.equal(result.output_evidence,sessions[0].tool_output);
+  t.mock.method(globalThis,'fetch',async(_url,options)=>{schema=JSON.parse(options.body).output_config.format.schema;return new Response(JSON.stringify({stop_reason:'end_turn',content:[{type:'text',text:JSON.stringify({business_type:'b2b',need:'possible',service:'cold_email',reason:'The visitor describes a business buyer.',input_session_id:schema.properties.input_session_id.enum[0],output_session_id:schema.properties.output_session_id.enum[0]})}]}),{status:200});});
+  const ai=new Anthropic({anthropicKey:'test-key',model:'test-model'}),sessions=[{session_id:'S01',tool_input:'CNC-machined parts\nfor electric vehicle makers',tool_output:'Competitor gaps:\nlong lead times'}];
+  const result=await ai.analyse({first_name:'Test'},sessions);assert.deepEqual(schema.properties.input_session_id.enum,['S01']);assert.equal(result.input_evidence,sessions[0].tool_input);assert.equal(result.output_evidence,sessions[0].tool_output);
 });
 test('draft assembly preserves source phrases and the approved link while normalising dashes', async t=>{
   t.mock.method(globalThis,'fetch',async()=>new Response(JSON.stringify({stop_reason:'end_turn',content:[{type:'text',text:JSON.stringify({subject:'A useful next step',advice:'Focus your outreach on a clear buyer problem — then ask a relevant question.',invitation:'Would a short conversation help?'})}]}),{status:200}));

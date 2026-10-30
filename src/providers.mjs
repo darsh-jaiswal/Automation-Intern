@@ -1,4 +1,6 @@
 import { CALL_URL, SERVICES, sourceAnchor } from './rules.mjs';
+import { appendFile, mkdir } from 'node:fs/promises';
+import { recordUsage } from '../hook-grader/lib/usage.mjs';
 
 export async function retry(fn, { attempts = 3, sleep = ms => new Promise(r => setTimeout(r, ms)), base = 1000 } = {}) {
   for (let attempt = 1; ; attempt++) {
@@ -16,12 +18,12 @@ async function request(url, options = {}) {
 }
 
 const analysisSchema = {
-  type: 'OBJECT', required: ['business_type', 'need', 'service', 'reason', 'input_evidence', 'output_evidence'],
+  type: 'OBJECT', required: ['business_type', 'need', 'service', 'reason', 'input_session_id', 'output_session_id'],
   properties: {
     business_type: { type: 'STRING', enum: ['b2b', 'd2c', 'unclear'] },
     need: { type: 'STRING', enum: ['clear', 'possible', 'none'] },
     service: { type: 'STRING', enum: SERVICES }, reason: { type: 'STRING' },
-    input_evidence: { type: 'STRING' }, output_evidence: { type: 'STRING' },
+    input_session_id: { type: 'STRING' }, output_session_id: { type: 'STRING' },
   },
 };
 const draftSchema = {
@@ -49,10 +51,14 @@ export class Gemini {
     try { return JSON.parse(text); } catch { throw new Error('Gemini returned invalid JSON.'); }
   }
   async analyse(contact, sessions) {
-    const inputs=[...new Set(sessions.map(s=>s.tool_input).filter(Boolean))],outputs=[...new Set(sessions.map(s=>s.tool_output).filter(Boolean))];
+    const evidence=sessions.map((session,index)=>({...session,session_id:session.session_id||session.id||`session_${index+1}`}));
+    const inputs=evidence.filter(s=>s.tool_input).map(s=>s.session_id),outputs=evidence.filter(s=>s.tool_output).map(s=>s.session_id);
     if(!inputs.length || !outputs.length) throw new Error('Assessment requires input and output evidence.');
-    const schema={...analysisSchema,properties:{...analysisSchema.properties,input_evidence:{type:'STRING',enum:inputs},output_evidence:{type:'STRING',enum:outputs}}};
-    return this.generate('Assess fit based only on provided evidence. B2B means the contact sells to businesses; D2C means the contact sells to consumers. Set business_type to unclear if the customer type is not explicitly supported. Company names alone are not evidence of industry or product. Clear need requires an explicitly diagnosed relevant gap or explicit request for help with personal branding, outreach, cold email or finding prospects. Merely generating ideas, an ICP, a competitor card, a schedule, a proposal or an ROI projection is only a possible need. A retention problem at a prospect is not automatically a lead-generation need for the submitter. Use none when no relevant need is evidenced. Choose the best relevant service, conservatively. Give one short factual reason without em dashes, inventing no products, industries, results or readiness. Choose input_evidence and output_evidence from the exact provided schema values, without paraphrasing. Never infer budget, buying readiness, funding, company size or commercial intent simply from tool use.', { contact, sessions }, schema);
+    const schema={...analysisSchema,properties:{...analysisSchema.properties,input_session_id:{type:'STRING',enum:inputs},output_session_id:{type:'STRING',enum:outputs}}};
+    const result=await this.generate('Assess fit based only on provided evidence. B2B means the contact sells to businesses; D2C means the contact sells to consumers. Set business_type to unclear if the customer type is not explicitly supported. Company names alone are not evidence of industry or product. Clear need requires an explicitly diagnosed relevant gap or explicit request for help with personal branding, outreach, cold email or finding prospects. Merely generating ideas, an ICP, a competitor card, a schedule, a proposal or an ROI projection is only a possible need. A retention problem at a prospect is not automatically a lead-generation need for the submitter. Use none when no relevant need is evidenced. Choose the best relevant service, conservatively. Give one short factual reason without em dashes, inventing no products, industries, results or readiness. Choose input_session_id and output_session_id from the provided IDs; code copies the exact original evidence. Never infer budget, buying readiness, funding, company size or commercial intent simply from tool use.', { contact, sessions:evidence }, schema);
+    const input=evidence.find(s=>s.session_id===result.input_session_id&&s.tool_input),output=evidence.find(s=>s.session_id===result.output_session_id&&s.tool_output);
+    if(!input||!output)throw new Error('AI selected an unknown source session.');
+    return {...result,input_evidence:input.tool_input,output_evidence:output.tool_output};
   }
   async draft(contact, sessions, assessment, correction = []) {
     const inputAnchor = sourceAnchor(assessment.analysis?.input_evidence) || sessions.map(s=>sourceAnchor(s.tool_input)).find(Boolean);
@@ -89,6 +95,7 @@ export class Anthropic extends Gemini {
         output_config: { format: { type: 'json_schema', schema: jsonSchema(schema) } },
       }),
     }));
+    try{await recordUsage(response,{source:'task1',operation:schema===draftSchema?'email_draft':'lead_analysis',localWrite:async record=>{const dir=new URL('../.local/',import.meta.url);await mkdir(dir,{recursive:true});await appendFile(new URL('anthropic-usage.jsonl',dir),JSON.stringify(record)+'\n');}});}catch{console.error('Claude usage logging was incomplete. The request may still be billable.');}
     if (response.stop_reason !== 'end_turn') throw new Error('Anthropic returned a refused or incomplete response.');
     const text = response.content?.filter(part => part.type === 'text').map(part => part.text).join('');
     try { return JSON.parse(text); } catch { throw new Error('Anthropic returned invalid JSON.'); }

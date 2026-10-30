@@ -66,7 +66,7 @@ export class Engine {
     const checks = inspect(contact, sessions);
     let analysis = existing?.analysis || null;
     let status = 'assessed'; let error = null;
-    const blocked = checks.excluded || checks.flags.includes('missing_tool_context') || checks.injection;
+    const blocked = checks.excluded || checks.flags.includes('missing_tool_context') || checks.flags.includes('contact_details_conflict') || checks.flags.includes('incomplete_hook_result') || checks.injection;
     if (!blocked && !analysis) {
       try {
         analysis = await this.ai.analyse(contact, contextFor(sessions));
@@ -77,7 +77,7 @@ export class Engine {
     const result = score(contact, sessions, analysis);
     const flags = [...result.checks.flags];
     if (checks.excluded) status = 'complete';
-    else if (checks.flags.some(f => ['missing_tool_context', 'prompt_injection', 'missing_or_invalid_email', 'service_overlap_review'].includes(f))) status = 'needs_review';
+    else if (checks.flags.some(f => ['missing_tool_context', 'prompt_injection', 'missing_or_invalid_email', 'service_overlap_review', 'contact_details_conflict', 'incomplete_hook_result'].includes(f))) status = 'needs_review';
     // Provider failures remain failures even when a record also needs human review.
     if (error) { status = 'assessment_error'; flags.push('ai_assessment_failed'); }
     const assessment = {

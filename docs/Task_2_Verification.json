@@ -1,0 +1,33 @@
+{
+  "verified_at": "2026-10-30T19:54:10.511Z",
+  "url": "https://myntmore-hook-grader-darsh.vercel.app",
+  "nextjs_build_verified": true,
+  "checked_at": "2026-10-30T19:53:25.707Z",
+  "http_status": 200,
+  "score": 30,
+  "failed_rules": 4,
+  "rewrites": 3,
+  "session_saved": true,
+  "replay_same_result": true,
+  "clipboard_verified": true,
+  "mobile_overflow": false,
+  "browser_errors": 0,
+  "invalid_request_status": 400,
+  "live_source": "Vercel browser submission, live Claude, Supabase, local n8n webhook and Zoho read-back",
+  "writing_version": "hook-writing-v1.1",
+  "stored_score_matches_code": true,
+  "stored_rewrites_pass_current_checks": true,
+  "single_row_for_replayed_session": true,
+  "n8n_webhook_delivery_verified": true,
+  "task1_current_assessment_status": "complete",
+  "zoho_status": "synced",
+  "zoho_draft_read_back_matches": true,
+  "original_sample_sessions_retained": 20,
+  "additional_fictional_hook_test_sessions": 3,
+  "original_sample_row_count": 20,
+  "unit_tests": {
+    "task1": 29,
+    "task2": 21
+  },
+  "no_email_sent": true
+}

@@ -60,8 +60,26 @@ test('scoring is bounded and thresholds are deterministic', () => {
   assert.equal(score(contact, sessions, { ...analysis, business_type:'d2c' }).tier,'warm');
 });
 test('free/personal email is not an exclusion', () => { assert.equal(inspect(normalize(row('L12')), [row('L12')]).excluded, false); });
+
+test('conflicting public contact claims are held without AI analysis or drafting', async () => {
+  const {engine}=setup({analyse(){throw Error('Conflicting identity must not call AI.');}});
+  const incoming={...row('L12'),lead_id:'hook_conflict_demo',contact_details_conflict:true};
+  await engine.ingest([incoming]);
+  const assessment=await engine.assess(normalize(incoming).contact_id);
+  assert.equal(assessment.status,'needs_review');assert.ok(assessment.flags.includes('contact_details_conflict'));
+  assert.equal((await engine.draft(assessment.id)).draft,null);
+});
 test('a staffing company selling to hiring managers is not a job seeker', () => {
   assert.equal(inspect({ designation: 'Founder' }, [{ tool_input: 'We sell recruiting software. ICP role: hiring managers', tool_output: 'DM angles generated' }]).excluded, false);
+});
+
+test('failed hook rewrites hold a repeat contact even when older sessions succeeded', async () => {
+  const {engine}=setup({analyse(){throw Error('Incomplete hook must not call AI.');}});
+  const original=row('L12');
+  await engine.ingest([original,{...original,lead_id:'hook_failed_demo',source_tool:'linkedin_hook_grader',tool_output:'',hook_result:{status:'rewrite_error',rewrites:[]}}]);
+  const assessment=await engine.assess(normalize(original).contact_id);
+  assert.equal(assessment.status,'needs_review');assert.ok(assessment.flags.includes('incomplete_hook_result'));assert.match(assessment.reason,/rewrites did not complete/);
+  assert.equal((await engine.draft(assessment.id)).draft,null);
 });
 test('failed Gemini is recorded with provisional score, never a completed AI result', async () => {
   const { engine, store } = setup({ analyse: async () => { throw Error('Provider request failed (HTTP 429).'); } });

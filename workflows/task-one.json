@@ -222,7 +222,8 @@
         "httpMethod": "POST",
         "path": "automation-intern-session",
         "authentication": "headerAuth",
-        "responseMode": "onReceived",
+        "responseMode": "lastNode",
+        "responseData": "firstEntryJson",
         "options": {}
       }
     },

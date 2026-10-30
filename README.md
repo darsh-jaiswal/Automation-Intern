@@ -1,6 +1,18 @@
 # Automation Intern
 
-Myntmore Round 2, Task 1. Draft-only lead follow-up engine by Darsh Jaiswal.
+Myntmore Round 2, Tasks 1 and 2 by Darsh Jaiswal: a draft-only follow-up engine and a deployed LinkedIn Hook Grader.
+
+## Task 2: live Hook Grader
+
+**Open:** https://myntmore-hook-grader-darsh.vercel.app
+
+Next.js/Vercel contact-first tool with six deterministic scoring rules out of 100, three Claude structured-JSON rewrites, one Supabase row per session, and durable delivery through the existing n8n Task 1 webhook. See [Task 2 notes and Loom script](docs/Task_2_Hook_Grader.md), [verification evidence](docs/Task_2_Verification.json), and [screenshots](docs/task2/).
+
+From `hook-grader/`: `npm ci`, configure server-only `.env.local`, then `npm run dev`. Run `npm test` and `npm run build` there. Deploy from that directory using `vercel deploy --prod`. Start `npm run relay` from this repository root to deliver queued sessions to the local n8n webhook. **Worker, n8n and relay must stay running for follow-up processing; saved sessions wait while they are offline.**
+
+Claude usage counts and estimated costs are logged without prompts or credentials. Root `npm run usage` refreshes the local cost tracker. Earlier usage coverage is partial and remaining account credit is unknown until a billing balance is supplied.
+
+## Task 1: lead follow-up engine
 
 Verified against live Supabase, Anthropic and Zoho through the local n8n workflow: 20 sessions, 19 contacts, 12 validated drafts, 17 contacts synced to Zoho, zero processing errors, and a successful replay with no duplicate records/drafts/alerts. All 17 CRM records were read back and checked. The test entry and contact without email remain preserved in Supabase and intentionally skipped in CRM. See `docs/VERIFICATION.md`.
 
@@ -27,7 +39,7 @@ Generate/import `workflows/task-one.json` into n8n (tested target: n8n 2.45.7). 
 
 The manual flow imports the CSV, lists contacts, loops through people, assesses fit, drafts/validates, saves CRM text and creates Hot alerts. The authenticated webhook accepts new tool sessions, ready for Task 2. The worker and n8n run on the same computer; cloud n8n needs a separately deployed HTTPS worker, not this loopback URL.
 
-The exported workflow is inactive. Publish/activate it in n8n before expecting its production webhook to listen. Manual/CLI sample execution does not require activation.
+The exported template is inactive. Publish it in n8n before expecting its production webhook to listen. The project-local instance was published and verified for Task 2. The webhook now responds after the last node, so the relay can verify downstream completion. Manual/CLI sample execution does not require publication.
 
 `node scripts/workflow.mjs --local-credential` generates a gitignored `.local/n8n-credential.json` for CLI import. Do not commit or show that file in the Loom.
 
@@ -68,7 +80,7 @@ Each draft must be under 120 words including subject, contain the approved call 
 
 `npm run status` reports credential presence and, when connected, current database counts. Credential presence alone is not integration verification. The dashboard shows processing and CRM status separately.
 
-Task 2, Task 3, public deployment and a recorded Loom are outside this Task 1 implementation. Three sourced manual company-enrichment examples are included in `docs/Company_Enrichment_Examples.md`; automatic matching/refresh is not implemented. The notes include an honest limitations section. See `docs/VERIFICATION.md` for the latest checks actually run.
+Task 2 is in `hook-grader/`; Task 3, the camera-on Loom recording and final submission remain. Three sourced manual company-enrichment examples are included in `docs/Company_Enrichment_Examples.md`; automatic matching/refresh is not implemented. The notes include limitations. Task 1's original verification is in `docs/VERIFICATION.md`; Task 2's live evidence is recorded separately.
 
 ## References
 
