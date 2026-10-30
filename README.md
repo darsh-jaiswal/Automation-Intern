@@ -82,6 +82,8 @@ Each draft must be under 120 words including subject, contain the approved call 
 
 Task 2 is in `hook-grader/`. [Task 3 is complete](docs/task3/README.md): a one-page written answer, all **15 real AI answers**, original screenshots, and three website recommendations. The user's camera-on Loom recording and final submission remain. Three sourced manual company-enrichment examples are included in `docs/Company_Enrichment_Examples.md`; automatic matching/refresh is not implemented. The notes include limitations. Task 1's original verification is in `docs/VERIFICATION.md`; Task 2's live evidence is recorded separately.
 
+[Combined Loom notes for all three tasks](docs/Loom_Notes_All_Tasks_Darsh.docx) include a suggested five-minute script and detailed preparation notes. `npm run notes` generates this single document; separate per-task copies have been retired.
+
 ## References
 
 - [Assignment](https://docs.google.com/document/d/1bc1tH0Zq22cRrTmZvg11ozHEiyM416DlqbDCgQPxlD4/edit)

@@ -58,19 +58,9 @@ The explicit browser smoke test is `hook-grader/tests/browser-check.mjs`. Set `B
 
 Server keys stay out of browser JavaScript. The public endpoint checks origin, JSON type, request size, contact validity, consent and a honeypot. Supabase-backed limits admit at most eight requests per IP per hour, three per email per hour and sixty globally per day. Identities are hashed in rate-limit records. These are basic abuse controls, not email-ownership verification or a complete production anti-bot system.
 
-## Short Loom script: about two minutes
+## Recording notes
 
-**00:00–00:20:** Open the live URL. Show the landing page, contact form and notice. “I followed Myntmore's contact-first tool pattern. The visitor enters a name, role and email before using the grader.”
-
-**00:20–00:45:** Paste an opening and show its score and failed rules. “All scoring is code. These six checks add up to one hundred. The same opening always receives the same score; Claude cannot change it.”
-
-**00:45–01:05:** Show the three alternatives and copy one. “Claude returns a structured JSON object with three named alternatives. I validate the writing rules and hold failed responses rather than making up a result.”
-
-**01:05–01:30:** Open the Supabase session row and expand `raw.hook_result`. “The contact, original hook, score, rule feedback and rewrites are stored together in one session row. Retrying a successful request does not call Claude again.”
-
-**01:30–02:00:** Show the n8n webhook execution and matching Zoho lead Description. “A saved queue passes the session through the Task 1 webhook. The local relay must be running; offline sessions wait safely. Zoho holds a follow-up draft, and nothing is sent automatically.”
-
-Keep `.env`, credential screens and provider billing details out of the recording. The final assignment's camera-on Loom and Task 3 remain separate work.
+Use [the combined Loom guide for all three tasks](Loom_Notes_All_Tasks_Darsh.docx). It contains one suggested recording sequence and the detailed preparation notes.
 
 ## API usage tracking
 

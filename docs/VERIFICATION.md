@@ -11,7 +11,7 @@ Recorded 30 October 2026. This file distinguishes implemented code, automated te
 - Windows runtime: npm 12 initially blocked sqlite3's install script. Approving only sqlite3 in the local n8n cache and rebuilding it restored n8n's database connection. The workflow uses JavaScript, not a Python node.
 - Draft-only design: no send endpoint exists. Hot alerts are internal database/dashboard records. Zoho receives text in Description, not a sent email.
 - Focused code reviews completed; identified scoring, validation, stale-assessment and retry/Cadence bugs were fixed and tested. Final integration review found no new blocking issue.
-- Editable Loom notes created in `docs/Task_1_Loom_Notes_Darsh.docx` and copied to the assignment folder. Notes contain the live result counts and distinguish credential setup from verification. DOCX ZIP integrity and readable paragraphs verified. A 20-row results CSV is exported to `docs/Task_1_Results.csv`.
+- Recording notes are now consolidated in [one editable guide for all three tasks](Loom_Notes_All_Tasks_Darsh.docx). It labels the original Task 1 counts as a historical snapshot and distinguishes credential setup from verification. A 20-row results CSV is exported to `docs/Task_1_Results.csv`.
 - Bonus: three manually researched, first-party-sourced company-enrichment examples are provided, with historical fact dates and limitations. No fictional person was matched to a real company.
 
 **Task 1 implementation verified.** The Loom notes and results export contain the current live counts. Credentials remain in gitignored local configuration. Task 2, Task 3, the user's camera-on Loom recording and final submission are separate remaining assignment work.

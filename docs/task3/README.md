@@ -16,7 +16,7 @@ Myntmore appeared in four of the fifteen answers. It was absent from every brand
 - [15-row comparison table](Task_3_AI_Search.pdf) and [editable detailed evidence](Task_3_AI_Search.docx).
 - [CSV](AI_Search_Collection_Status.csv): all fifteen results, dates, modes, response URLs and every screenshot filename.
 - [Original screenshots](screenshots/). Continuation screenshots preserve longer answers. The CSV and detailed Word file list all continuations.
-- [Observed answers and source URLs](observations.json), [capture status](access_status.json), and [Loom talking notes](Task_3_Loom_Notes.md).
+- [Observed answers and source URLs](observations.json), [capture status](access_status.json), and [combined Loom notes for all three tasks](../Loom_Notes_All_Tasks_Darsh.docx).
 
 The written answer fits one A4 page. The comparison table and screenshots are a separate evidence appendix. The supplied database bug was analysed; no production schema or Myntmore website was changed.
 
