@@ -1,0 +1,424 @@
+{
+  "id": "automationInternTaskOne",
+  "name": "Automation Intern - Lead Follow-Up Engine",
+  "nodes": [
+    {
+      "id": "manual",
+      "name": "Run sample CSV",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "import-every-original-session",
+      "name": "Import every original session",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        230,
+        0
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "automation-worker-header",
+          "name": "Automation Worker"
+        }
+      },
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:4310/api/import",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}",
+        "options": {
+          "timeout": 300000
+        }
+      }
+    },
+    {
+      "id": "list-unique-contacts",
+      "name": "List unique contacts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        0
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "automation-worker-header",
+          "name": "Automation Worker"
+        }
+      },
+      "parameters": {
+        "method": "GET",
+        "url": "http://127.0.0.1:4310/api/contacts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 300000
+        }
+      }
+    },
+    {
+      "id": "split",
+      "name": "One item per person",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        690,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return $json.contacts.map(contact => ({ json: { contact_id: contact.id } }));"
+      }
+    },
+    {
+      "id": "loop",
+      "name": "Process people in order",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        920,
+        0
+      ],
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      }
+    },
+    {
+      "id": "clean-and-score",
+      "name": "Clean and score",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1150,
+        100
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "automation-worker-header",
+          "name": "Automation Worker"
+        }
+      },
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:4310/api/assess",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({contact_id: $json.contact_id}) }}",
+        "options": {
+          "timeout": 300000
+        }
+      }
+    },
+    {
+      "id": "write-and-validate-draft",
+      "name": "Write and validate draft",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1380,
+        100
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "automation-worker-header",
+          "name": "Automation Worker"
+        }
+      },
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:4310/api/draft",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({assessment_id: $json.id}) }}",
+        "options": {
+          "timeout": 300000
+        }
+      }
+    },
+    {
+      "id": "save-crm-draft-and-hot-alert",
+      "name": "Save CRM draft and Hot alert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1610,
+        100
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "automation-worker-header",
+          "name": "Automation Worker"
+        }
+      },
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:4310/api/publish",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({assessment_id: $json.id}) }}",
+        "options": {
+          "timeout": 300000
+        }
+      }
+    },
+    {
+      "id": "review-final-results",
+      "name": "Review final results",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1150,
+        -160
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "automation-worker-header",
+          "name": "Automation Worker"
+        }
+      },
+      "parameters": {
+        "method": "GET",
+        "url": "http://127.0.0.1:4310/api/state",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 300000
+        }
+      }
+    },
+    {
+      "id": "webhook",
+      "name": "New tool session webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        230,
+        400
+      ],
+      "webhookId": "automation-intern-session",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "automation-worker-header",
+          "name": "Automation Worker"
+        }
+      },
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "automation-intern-session",
+        "authentication": "headerAuth",
+        "responseMode": "onReceived",
+        "options": {}
+      }
+    },
+    {
+      "id": "preserve-new-tool-session",
+      "name": "Preserve new tool session",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        400
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "automation-worker-header",
+          "name": "Automation Worker"
+        }
+      },
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:4310/api/sessions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": {
+          "timeout": 300000
+        }
+      }
+    },
+    {
+      "id": "contact",
+      "name": "Use incoming contact",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        690,
+        400
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{contact_id:$json.contact_id}}];"
+      }
+    },
+    {
+      "id": "note",
+      "name": "Rules and AI responsibilities",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -270
+      ],
+      "parameters": {
+        "width": 900,
+        "height": 180,
+        "content": "## Myntmore / Task 1\n**Rules:** preserve sessions, group repeat visitors, exclusions, final score/tier, draft checks, retries and deduplication.\n**Anthropic (or optional Gemini):** interpret business need, choose a service, and write context-based drafts.\n**Safety:** no send endpoints; Zoho workflows and Cadences are suppressed. Import the local Automation Worker credential before running."
+      }
+    }
+  ],
+  "connections": {
+    "Run sample CSV": {
+      "main": [
+        [
+          {
+            "node": "Import every original session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Import every original session": {
+      "main": [
+        [
+          {
+            "node": "List unique contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List unique contacts": {
+      "main": [
+        [
+          {
+            "node": "One item per person",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One item per person": {
+      "main": [
+        [
+          {
+            "node": "Process people in order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process people in order": {
+      "main": [
+        [
+          {
+            "node": "Review final results",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Clean and score",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean and score": {
+      "main": [
+        [
+          {
+            "node": "Write and validate draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write and validate draft": {
+      "main": [
+        [
+          {
+            "node": "Save CRM draft and Hot alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save CRM draft and Hot alert": {
+      "main": [
+        [
+          {
+            "node": "Process people in order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "New tool session webhook": {
+      "main": [
+        [
+          {
+            "node": "Preserve new tool session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preserve new tool session": {
+      "main": [
+        [
+          {
+            "node": "Use incoming contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Use incoming contact": {
+      "main": [
+        [
+          {
+            "node": "Process people in order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all"
+  },
+  "pinData": {},
+  "tags": []
+}

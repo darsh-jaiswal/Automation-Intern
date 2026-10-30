@@ -1,0 +1,22 @@
+{
+  "name": "automation-intern",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Myntmore draft-only lead follow-up engine",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "import": "node src/cli.mjs import",
+    "run": "node src/cli.mjs run",
+    "status": "node src/cli.mjs status",
+    "test": "node --test tests/*.test.mjs",
+    "notes": "node scripts/notes.mjs"
+  },
+  "dependencies": {
+    "csv-parse": "^6.1.0",
+    "docx": "^9.15.0"
+  }
+}
