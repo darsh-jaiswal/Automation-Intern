@@ -1,16 +1,9 @@
 {
-  "checked_at": "2026-10-30T20:45:18.417Z",
+  "checked_at": "2026-10-30T21:24:40.327950+00:00",
   "user_browser_permission_granted": true,
-  "supported_browser_inventory": {
-    "apps": 0,
-    "browsers": 0
-  },
-  "errors": [
-    "Computer Use native pipe is unavailable: failed to connect native pipe: The system cannot find the file specified. (os error 2)",
-    "The browser access host is unavailable"
-  ],
-  "recovery": "Reset both supported JavaScript sessions, reinitialised and retried discovery; errors persisted.",
-  "remaining_answers": {
+  "native_chrome_control": "working; used for final nine answers",
+  "browser_extension_host": "unavailable; native control was sufficient",
+  "complete_answers": {
     "ChatGPT": [
       1,
       2,
@@ -19,23 +12,20 @@
       5
     ],
     "Perplexity": [
-      2,
-      3,
-      4,
-      5
-    ]
-  },
-  "complete_answers": {
-    "Gemini": [
       1,
       2,
       3,
       4,
       5
     ],
-    "Perplexity": [
-      1
+    "Gemini": [
+      1,
+      2,
+      3,
+      4,
+      5
     ]
   },
-  "required_next_step": "Restore the browser/Computer Use host connection, or have the user supply the remaining actual answers/screenshots. No further permission request is needed."
+  "remaining_answers": {},
+  "status": "All15 requested AI answers captured; user handled Perplexity authentication."
 }

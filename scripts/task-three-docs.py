@@ -17,6 +17,12 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / 'docs' / 'task3'
 DOCS.mkdir(parents=True, exist_ok=True)
+
+
+def nonempty_text(value):
+    return isinstance(value, str) and bool(value.strip())
+
+
 markdown = (ROOT / 'docs' / 'Task_3_Ops_Judgement.md').read_text(encoding='utf-8')
 answer = markdown.split('## 3a. A silent bug\n\n', 1)[1].split('\n\nThis is an analysis', 1)[0]
 paragraphs = answer.replace('`', '').split('\n\n')
@@ -65,19 +71,33 @@ for question in prompts['questions']:
         screenshot = data.get('screenshot', '')
         source_image = ROOT / '.local/task3/raw' / screenshot
         image_present = bool(screenshot) and source_image.is_file()
-        complete = data.get('status') == 'complete' and image_present
-        if image_present:
-            shutil.copy2(source_image, screenshots / source_image.name)
+        declared_images = list(dict.fromkeys(image for image in [screenshot, *data.get('screenshots', [])] if image))
+        all_images_present = image_present and all((ROOT / '.local/task3/raw' / image).is_file() for image in declared_images)
+        complete = (data.get('status') == 'complete' and all_images_present and
+                    all(nonempty_text(data.get(key)) for key in ('answer', 'observed_at', 'response_url', 'mode')))
+        assessment_complete = (assessment.get('appears') in ('Yes', 'No') and
+                               all(nonempty_text(assessment.get(key)) for key in ('position', 'others', 'summary')))
+        captured_images = []
+        for image in declared_images:
+            image_path = ROOT / '.local/task3/raw' / image
+            if image and image_path.is_file():
+                shutil.copy2(image_path, screenshots / image_path.name)
+                captured_images.append(f'screenshots/{image_path.name}')
+        cited_sources = '\n'.join(link['url'] for link in data.get('links', []))
+        if data.get('citation_labels'):
+            cited_sources += ('\n' if cited_sources else '') + 'Visible citation labels: ' + '; '.join(data['citation_labels']) + ' (targets not all expanded).'
         rows.append({'question_id': question['id'], 'ai': provider, 'question': question['prompt'],
                      'collection_status': 'complete' if complete else 'awaiting_access_or_capture',
+                     'assessment_complete': bool(assessment_complete),
                      'myntmore_appears': assessment.get('appears', 'Not observed') if complete else 'Not observed',
                      'position': assessment.get('position', '') if complete else 'Unavailable',
                      'who_appears_instead': assessment.get('others', '') if complete else 'No agency answer obtained',
                      'answer_summary': assessment.get('summary', '') if complete else assessment.get('summary', 'Not captured; browser access required.'),
-                     'ai_cited_sources': '\n'.join(link['url'] for link in data.get('links', [])),
+                     'ai_cited_sources': cited_sources,
                      'source_note': assessment.get('source_note', ''),
                      'response_url': data.get('response_url', ''),
                      'screenshot': f'screenshots/{screenshot}' if image_present else '',
+                     'all_screenshots': '\n'.join(captured_images),
                      'observed_at': data.get('observed_at', ''),
                      'mode': data.get('mode', '')})
 with (DOCS / 'AI_Search_Collection_Status.csv').open('w', encoding='utf-8-sig', newline='') as handle:
@@ -86,24 +106,46 @@ with (DOCS / 'AI_Search_Collection_Status.csv').open('w', encoding='utf-8-sig', 
     writer.writerows(rows)
 
 complete_count = sum(row['collection_status'] == 'complete' for row in rows)
+changes_complete = (len(observations.get('website_changes', [])) == 3 and
+                    all(all(nonempty_text(change.get(key)) for key in ('change', 'why', 'questions'))
+                        for change in observations['website_changes']))
+finished = complete_count == 15 and all(row['assessment_complete'] for row in rows) and changes_complete
+suffix = '' if finished else '_DRAFT'
+status_label = '' if finished else ' · DRAFT'
+modes = '; '.join(f'{provider}: ' + ', '.join(sorted({row['mode'] for row in rows
+                  if row['ai'] == provider and row['collection_status'] == 'complete'}))
+                  for provider in prompts['providers'])
+method = ('Five identical neutral prompts, fresh conversations, 31 October 2026 IST. '
+          + modes + '. Account and model differences limit direct comparison. '
+          'Position means order in an answer, not a stable ranking. Literal AI-linked URLs are preserved; '
+          'some are inaccurate or search wrappers. Explicit hyperlinks were captured; citation-chip '
+          'targets were not all expanded. Original screenshots are bundled in screenshots/.')
 report = Document()
-report.add_heading('Task 3b · AI Search Evidence · DRAFT', 0)
-report.add_paragraph(f'{complete_count}/15 actual agency answers captured. Missing answers are unavailable, not negative Myntmore results.')
-report.add_paragraph('Five identical prompts, fresh conversations, signed-out default interfaces. Position is order in an answer, not a stable ranking. Sources are recorded as the AI provided them, including inaccurate or search-wrapper URLs. Screenshots are bundled in the screenshots directory.')
+report.add_heading(f'Task 3b · AI Search Evidence{status_label}', 0)
+report.add_paragraph(f'{complete_count}/15 actual agency answers captured. Unavailable answers are not negative Myntmore results.')
+report.add_paragraph(method)
 for row in rows:
     report.add_heading(f'Q{row["question_id"]} — {row["ai"]}', 2)
     report.add_paragraph(row['question'])
     report.add_paragraph(f'Status: {row["collection_status"]}. Myntmore: {row["myntmore_appears"]}; position: {row["position"]}.')
     report.add_paragraph(f'Other names: {row["who_appears_instead"]}\nAnswer: {row["answer_summary"]}')
-    report.add_paragraph(f'AI-cited sources:\n{row["ai_cited_sources"] or row["source_note"]}\nResponse URL: {row["response_url"] or "Not available"}\nScreenshot: {row["screenshot"] or "No answer screenshot"}')
+    report.add_paragraph(f'AI-cited sources:\n{row["ai_cited_sources"] or row["source_note"]}\nResponse URL: {row["response_url"] or "Not available"}\nScreenshots: {row["all_screenshots"] or "No answer screenshot"}\nObserved: {row["observed_at"]} | Mode: {row["mode"]}')
     if row['source_note'] and row['ai_cited_sources']:
         report.add_paragraph(row['source_note'])
-report.add_heading('Three website changes — provisional', 1)
+    full_source_list = assessed.get((row['ai'], row['question_id']), {}).get('source_list_links', [])
+    if full_source_list:
+        report.add_paragraph('Complete source-tab URL list (includes retrieved sources, not all necessarily cited inline):')
+        for source in full_source_list:
+            report.add_paragraph(source['url'])
+report.add_heading('Three website changes' + ('' if finished else ' — provisional'), 1)
 for change in observations.get('website_changes', []):
     report.add_heading(f'{change["id"]}. {change["questions"]}', 2)
     report.add_paragraph(change['change'])
     report.add_paragraph(change['why'])
-report.save(DOCS / 'Task_3_AI_Search_DRAFT.docx')
+report.add_heading('Myntmore pages checked', 1)
+for url in observations.get('site_pages_checked', []):
+    report.add_paragraph(url)
+report.save(DOCS / f'Task_3_AI_Search{suffix}.docx')
 
 table_style = ParagraphStyle(name='EvidenceCell', fontName='Helvetica', fontSize=7, leading=9, wordWrap='CJK')
 cell = lambda value: Paragraph(escape(str(value)).replace('\n', '<br/>'), table_style)
@@ -119,24 +161,45 @@ table.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#e6e
                            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
                            ('LEFTPADDING', (0, 0), (-1, -1), 5),
                            ('RIGHTPADDING', (0, 0), (-1, -1), 5)]))
-evidence_pdf = DOCS / 'Task_3_AI_Search_DRAFT.pdf'
+evidence_pdf = DOCS / f'Task_3_AI_Search{suffix}.pdf'
 SimpleDocTemplate(str(evidence_pdf), pagesize=landscape(A4), topMargin=13*mm, bottomMargin=13*mm,
                   leftMargin=12*mm, rightMargin=12*mm).build([
-                      Paragraph(f'Task 3b: AI search — DRAFT ({complete_count}/15 answers)', styles['Title']),
-                      Paragraph('Unavailable means no agency answer was obtained, not that Myntmore was absent. See bundled full-resolution screenshots. Gemini: Flash-Lite; Perplexity: Search; signed out. Sources are AI-provided and not endorsements.', styles['Normal']),
+                      Paragraph(f'Task 3b: AI search{status_label} ({complete_count}/15 answers)', styles['Title']),
+                      Paragraph(escape(method), styles['Normal']),
                       Spacer(1, 5*mm), table])
 
 one_page_style = ParagraphStyle(name='WrittenBody', fontName='Helvetica', fontSize=9.6, leading=12.5, spaceAfter=8)
-written = [Paragraph('Task 3: Written answers — DRAFT', styles['Title']),
-           Paragraph(f'Darsh Jaiswal | {complete_count}/15 AI answers captured; remaining evidence pending browser access.', styles['Normal']),
+written = [Paragraph(f'Task 3: Written answers{status_label}', styles['Title']),
+           Paragraph(f'Darsh Jaiswal | {complete_count}/15 AI answers captured | 31 October 2026', styles['Normal']),
            Spacer(1, 4*mm), Paragraph('3a. A silent bug', styles['Heading2'])]
 written.extend(Paragraph(escape(text), one_page_style) for text in paragraphs)
-written.append(Paragraph('3b. First three website changes (provisional)', styles['Heading2']))
+written.append(Paragraph('3b. First three website changes' + ('' if finished else ' (provisional)'), styles['Heading2']))
 for change in observations.get('website_changes', []):
     written.append(Paragraph(escape(f'{change["id"]}. {change["change"]} Why: {change["why"]} Helps: {change["questions"]}.'), one_page_style))
-written.append(Paragraph('AI-search table and original screenshots are separate evidence. Finalise the recommendations after all 15 runs. No production website or database was modified.', styles['Normal']))
-SimpleDocTemplate(str(DOCS / 'Task_3_Written_Answers_DRAFT.pdf'), pagesize=A4,
+footer = ('AI-search table and original screenshots are separate evidence. No production website or database was modified.'
+          if finished else 'AI-search evidence is incomplete; recommendations remain provisional. No production website or database was modified.')
+written.append(Paragraph(footer, styles['Normal']))
+SimpleDocTemplate(str(DOCS / f'Task_3_Written_Answers{suffix}.pdf'), pagesize=A4,
                   topMargin=13*mm, bottomMargin=13*mm, leftMargin=16*mm, rightMargin=16*mm).build(written)
+editable = Document()
+editable_section = editable.sections[0]
+editable_section.page_width, editable_section.page_height = Inches(8.27), Inches(11.69)
+editable_section.top_margin = editable_section.bottom_margin = Inches(.5)
+editable_section.left_margin = editable_section.right_margin = Inches(.63)
+editable_normal = editable.styles['Normal']
+editable_normal.font.name, editable_normal.font.size = 'Calibri', Pt(10)
+editable_normal.paragraph_format.space_after = Pt(5)
+editable_normal.paragraph_format.line_spacing = 1
+editable.add_heading(f'Task 3: Written answers{status_label}', 0)
+editable.add_paragraph(f'Darsh Jaiswal | {complete_count}/15 AI answers captured | 31 October 2026')
+editable.add_heading('3a. A silent bug', 2)
+for text in paragraphs:
+    editable.add_paragraph(text)
+editable.add_heading('3b. First three website changes', 2)
+for change in observations.get('website_changes', []):
+    editable.add_paragraph(f'{change["id"]}. {change["change"]} Why: {change["why"]} Helps: {change["questions"]}.')
+editable.add_paragraph(footer)
+editable.save(DOCS / f'Task_3_Written_Answers{suffix}.docx')
 print(json.dumps({'bug_answer_words': len(answer.split()), 'observations_needed': len(rows),
                   'complete_captures': complete_count,
-                  'status': 'Collection in progress; visibility cells are not fabricated.'}))
+                  'status': 'Complete' if finished else 'Collection in progress; visibility cells are not fabricated.'}))

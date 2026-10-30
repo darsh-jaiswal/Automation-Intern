@@ -1,21 +1,29 @@
-# Task 3: current collection status
+# Task 3: completed results and evidence
 
-**DRAFT / incomplete: 6 of 15 actual agency answers captured.** The remaining nine must be obtained before calling Task 3 complete. The user approved Computer Use, but its native helper and browser host remain unavailable after resetting both supported connections. No further permission is needed; the connection must be restored.
+**Complete: 15 of 15 real AI answers captured on 31 October 2026 IST.** All five questions were asked unchanged in fresh conversations on ChatGPT, Perplexity and Gemini. No AI answer or screenshot was fabricated.
 
-| Provider | Complete answers | Access condition |
-| --- | --- | --- |
-| ChatGPT | 0/5 | A browser-access challenge prevented the signed-out test. Approved signed-in browser access is blocked by the disconnected host. |
-| Perplexity | 1/5 | Q1 answered. Q2–Q5 returned a sign-up requirement, not agency recommendations. |
-| Gemini | 5/5 | Signed-out Flash-Lite responses captured with original screenshots. |
+| Provider | Answers captured | Myntmore mentions | Observed setup |
+| --- | --- | --- | --- |
+| ChatGPT | 5/5 | Q1, position 2 | Signed-in Instant, Plus account |
+| Perplexity | 5/5 | Q1, position 1; Q3, position 4 | Search; Q1 signed out, Q2-Q5 signed in on Free plan. Q2 displayed an automatic Pro free preview. |
+| Gemini | 5/5 | Q1, position 1 | Signed-out Flash-Lite |
 
-`Task_3a_Silent_Bug_Darsh.pdf` is the completed one-page analysis of the supplied database/code example. No production schema was changed.
+Myntmore appeared in four of the fifteen answers. It was absent from every branding (Q2), exporter (Q4) and Zoho automation (Q5) answer. This is a dated observation, not a stable rank or a controlled comparison of models; account state, mode and personalisation can affect answers.
 
-`Task_3_Written_Answers_DRAFT.pdf` fits one page and includes three provisional website changes. These recommendations are based on the six captured answers and a current first-party site check. Finalise them after all fifteen answers are available.
+## Submission files
 
-`Task_3_AI_Search_DRAFT.pdf` and `.docx` hold the comparison. `AI_Search_Collection_Status.csv` provides all fifteen requested rows. An unavailable answer is not classified as a negative result. The screenshot column points to files bundled in `screenshots/`; sign-up-screen captures are access evidence, not completed agency answers.
+- [One-page written answer: PDF](Task_3_Written_Answers.pdf) and [editable Word](Task_3_Written_Answers.docx). Covers the silent bug and three website changes.
+- [15-row comparison table](Task_3_AI_Search.pdf) and [editable detailed evidence](Task_3_AI_Search.docx).
+- [CSV](AI_Search_Collection_Status.csv): all fifteen results, dates, modes, response URLs and every screenshot filename.
+- [Original screenshots](screenshots/). Continuation screenshots preserve longer answers. The CSV and detailed Word file list all continuations.
+- [Observed answers and source URLs](observations.json), [capture status](access_status.json), and [Loom talking notes](Task_3_Loom_Notes.md).
 
-`observations.json` preserves prompts, response URLs, observed text, literal AI-linked URLs, model/mode and manual summaries. Some Gemini URLs are Google search wrappers; Q1's explicit Myntmore link contains a misspelled domain. These are recorded as provided, not silently repaired or presented as independently verified recommendations.
+The written answer fits one A4 page. The comparison table and screenshots are a separate evidence appendix. The supplied database bug was analysed; no production schema or Myntmore website was changed.
 
-The five neutral questions are in `../Task_3_Ops_Judgement.md`. Every provider receives the exact same prompt. Interface trials are separate from the completed captures. Fresh conversations and a single current snapshot do not establish stable rankings or prove a website change will improve AI visibility.
+## Evidence limits
 
-Task 3 has made no calls using the assignment's Anthropic API key. Claude cost tracking remains available through root `npm run usage`.
+URLs and AI statements are recorded as provided. Gemini Q1's explicit Myntmore hyperlink contains a misspelled domain inside a Google search wrapper; it was not silently repaired. Gemini Q2 exposed citation labels but no explicit URL targets were captured. Other inline URLs and visible citation labels are recorded, although not every multi-source chip was expanded. Perplexity Q5 additionally includes all 23 source-tab URLs in the detailed Word file and observations JSON; the table records the first ten relevant source-tab entries. Retrieved source-list entries are distinguished from inline citations.
+
+Several answers qualify agency claims as unverified. Perplexity Q5 calls three firms strong matches but also says 4Byte's Zoho CRM integration is unverified. These inconsistencies are preserved, not endorsed. The three website recommendations are grounded in the observed answers and the seven Myntmore pages recorded in observations.json; improved AI visibility is not guaranteed.
+
+Task 3 itself made no calls using the assignment's Anthropic API key. The separate Claude cost tracker reports only recorded calls; earlier unmetered usage and remaining billing credits are unknown. Regenerate it with root `npm run usage`.

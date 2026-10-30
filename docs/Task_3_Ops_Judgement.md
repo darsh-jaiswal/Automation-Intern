@@ -2,7 +2,7 @@
 
 Darsh Jaiswal · Myntmore Systems & AI Automation Intern · Round 2
 
-**Current status:** 3a is complete. 3b has six of fifteen real agency answers and is not complete. See [collection status and evidence](task3/README.md).
+**Current status:** Task 3 is complete: the bug analysis, all fifteen real AI answers with screenshots, and three evidence-based website changes. See [results and evidence](task3/README.md).
 
 ## 3a. A silent bug
 
@@ -16,7 +16,7 @@ This is an analysis of the supplied example. No production database constraint w
 
 ## 3b. AI search: collection method
 
-Five neutral, unbranded client questions will be submitted unchanged to ChatGPT, Perplexity and Gemini in fresh conversations. Each prompt requests up to five agencies, a short reason and sources. Results are recorded exactly as observed, with date, visible mode/model, response URL and screenshots. Mention position means order in the answer, not a stable search-engine ranking. An unavailable answer is recorded as unavailable, never replaced by an invented result or another provider's response.
+Five neutral, unbranded client questions were submitted unchanged to ChatGPT, Perplexity and Gemini in fresh conversations on 31 October 2026 IST. Each prompt requests up to five agencies, a short reason and sources. Results include date, visible mode/model, response URL and screenshots. ChatGPT used signed-in Instant (Plus), Gemini used signed-out Flash-Lite, and Perplexity used signed-out Search for Q1 and signed-in Search for Q2-Q5; Q2 displayed an automatic Pro free preview. These account/model differences limit comparison. Mention position means order in the answer, not a stable search-engine ranking.
 
 ### The five identical prompts
 
@@ -26,7 +26,7 @@ Five neutral, unbranded client questions will be submitted unchanged to ChatGPT,
 4. Which agencies help Indian manufacturers and exporters find overseas B2B buyers using LinkedIn and email outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.
 5. Which agencies in Mumbai build AI-powered lead generation and follow-up automation connected to Zoho CRM? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.
 
-Five Gemini answers and Perplexity Q1 have been captured. ChatGPT access and Perplexity Q2–Q5 require browser access/sign-in. [The draft comparison](task3/Task_3_AI_Search_DRAFT.pdf) marks missing answers as unavailable rather than a negative visibility result. Three provisional website changes, grounded in the six responses and current site checks, appear in [the one-page written draft](task3/Task_3_Written_Answers_DRAFT.pdf). They must be finalised after the remaining nine runs.
+All fifteen answers have been captured. Myntmore appeared in four: all three Q1 answers and Perplexity Q3. It was absent from all Q2, Q4 and Q5 answers. The [comparison table](task3/Task_3_AI_Search.pdf) records each result and its screenshot. The [one-page written answer](task3/Task_3_Written_Answers.pdf) contains 3a and the three website changes; the results table and screenshots form a separate evidence appendix. AI statements and linked URLs are recorded as provided, including errors, and are not endorsements.
 
 ## Technical references for 3a
 
