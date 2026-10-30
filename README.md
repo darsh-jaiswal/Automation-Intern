@@ -2,7 +2,7 @@
 
 Myntmore Round 2, Task 1. Draft-only lead follow-up engine by Darsh Jaiswal.
 
-Verified locally against live Supabase and Anthropic: 20 sessions, 19 contacts, 12 validated drafts, zero processing errors, and a successful n8n replay with no duplicate records/drafts/alerts. Zoho OAuth authorization and live CRM sync remain pending; see `docs/VERIFICATION.md`.
+Verified against live Supabase, Anthropic and Zoho through the local n8n workflow: 20 sessions, 19 contacts, 12 validated drafts, 17 contacts synced to Zoho, zero processing errors, and a successful replay with no duplicate records/drafts/alerts. All 17 CRM records were read back and checked. The test entry and contact without email remain preserved in Supabase and intentionally skipped in CRM. See `docs/VERIFICATION.md`.
 
 The sample contains 20 fictional tool sessions and 19 people. Original sessions are retained. Repeat visitors are grouped by normalised email (or LinkedIn URL if email is missing). Different people at one company remain separate.
 

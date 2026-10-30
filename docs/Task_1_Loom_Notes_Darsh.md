@@ -8,9 +8,9 @@ A draft-only lead follow-up engine: original CSV sessions go into Supabase, repe
 
 ## Current verification status
 
-Generated: 2026-10-30T16:22:31.156Z. AI provider: anthropic. Model: claude-sonnet-4-6. Supabase configured: true; AI configured: true; Zoho configured: false. A configured credential is not proof that the integration works.
+Generated: 2026-10-30T17:54:10.978Z. AI provider: anthropic. Model: claude-sonnet-4-6. Supabase configured: true; AI configured: true; Zoho configured: true. A configured credential is not proof that the integration works.
 
-Latest database summary: {"contacts":19,"hot":1,"warm":13,"not_a_fit":5,"drafts":12,"review":4,"errors":0,"crm_synced":0}
+Latest database summary: {"contacts":19,"hot":1,"warm":13,"not_a_fit":5,"drafts":12,"review":4,"errors":0,"crm_synced":17}
 
 Automated tests use test doubles, not real AI responses. A live Anthropic structured-JSON smoke test has passed. Confirm the current Supabase and Zoho results on screen before recording.
 

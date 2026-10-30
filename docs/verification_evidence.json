@@ -1,0 +1,19 @@
+{
+  "verified_at": "2026-10-30T17:54:11.646Z",
+  "sample_sessions": 20,
+  "contacts": 19,
+  "hot": 1,
+  "warm": 13,
+  "not_a_fit": 5,
+  "drafts": 12,
+  "review": 4,
+  "errors": 0,
+  "crm_synced": 17,
+  "crm_records_intentionally_skipped": 2,
+  "current_hot_alerts": 1,
+  "automated_tests_passed": 25,
+  "crm_read_back_verified": 17,
+  "repeated_crm_upsert_kept_same_record": true,
+  "local_n8n_replay_kept_sessions_contacts_drafts_and_alerts": true,
+  "credentials_included": false
+}
