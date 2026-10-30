@@ -18,7 +18,7 @@
     "usage": "node scripts/usage-report.mjs"
   },
   "dependencies": {
-    "csv-parse": "^6.1.0",
+    "csv-parse": "7.0.3",
     "docx": "^9.15.0"
   }
 }

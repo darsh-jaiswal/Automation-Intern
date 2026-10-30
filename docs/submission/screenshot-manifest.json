@@ -1,0 +1,68 @@
+[
+  {
+    "number": 1,
+    "file": "screenshots/task2-visitor-flow.png",
+    "placement": "Task 2 / visitor flow and Vercel deployment",
+    "sha256": "3cc5b23f296ce50feb4f5e88dc654cd5f4468354dff9d4244af3d060dd3ee222"
+  },
+  {
+    "number": 2,
+    "file": "screenshots/task2-six-scoring-rules.jpeg",
+    "placement": "Task 2 / six fixed scoring rules",
+    "sha256": "23ebec2b454de0a9f519c607faf491f87ec5ced98cd2158dec79b953982f95d9"
+  },
+  {
+    "number": 3,
+    "file": "screenshots/task2-structured-rewrites.png",
+    "placement": "Task 2 / structured rewrites and validation",
+    "sha256": "7d1a654ffe4b56a64db875bd58cc4f81d9b8a4e0baaa98aa69a57814101cc43c"
+  },
+  {
+    "number": 4,
+    "file": "screenshots/task2-session-and-webhook.png",
+    "placement": "Task 2 / saved session and n8n delivery",
+    "sha256": "7ceea90651bcfa5939971fa34c723e7addc54f06b1e7d03f51dbb0312f629fe1"
+  },
+  {
+    "number": 5,
+    "file": "screenshots/task3a-silent-bug.png",
+    "placement": "Task 3a / bug diagnosis, fix and prevention",
+    "sha256": "d240f38debcac6ee54aef20def4d3b83b179b98e467285715c8a62ceae9a9743"
+  },
+  {
+    "number": 6,
+    "file": "screenshots/task1-company-enrichment.png",
+    "placement": "Task 1 / three manual enrichment examples",
+    "sha256": "2e4cd59d1c85d21825d480f425d272696b7c7e646b56e3aed5fb9d6a8cc6b887"
+  },
+  {
+    "number": 7,
+    "file": "screenshots/task1-follow-up-summary.png",
+    "placement": "Task 1 / routing and follow-up draft summary",
+    "sha256": "ffe8a7e88580a5a8c7e0bd641c4b496f87addc63fd2fd970bb07d6ece755c75c"
+  },
+  {
+    "number": 8,
+    "file": "screenshots/task1-draft-writing-checks.png",
+    "placement": "Task 1 / email writing checks",
+    "sha256": "d35077de7848f112cc4857f4020e3139d1de4d834128af54af922c588568d151"
+  },
+  {
+    "number": 9,
+    "file": "screenshots/task1-lead-scoring.png",
+    "placement": "Task 1 / lead scoring",
+    "sha256": "ebabc926f98ecf2feb8e794c4b5182c2a45b236a9d11ab87984fc6635fd1fcb2"
+  },
+  {
+    "number": 10,
+    "file": "screenshots/task1-rules-versus-claude.png",
+    "placement": "Task 1 / rules versus Claude",
+    "sha256": "974ecb86a8a772164a3be47dc2e2ce2b609e2a7cf9a223ffe4a41355f1e1c1ef"
+  },
+  {
+    "number": 11,
+    "file": "screenshots/task1-messy-data.png",
+    "placement": "Task 1 / duplicates, test entries and non-buyers",
+    "sha256": "b09d89e47172243f091a37001af948a0e89c5989ff87f4d3dd23d72849492118"
+  }
+]
