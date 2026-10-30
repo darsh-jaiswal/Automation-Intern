@@ -1,0 +1,39 @@
+[
+  {
+    "company": "Razorpay",
+    "domain": "razorpay.com",
+    "funding_event": "Series F",
+    "funding_usd": 375000000,
+    "employees_reported": "about 2000",
+    "fact_date": "2021-12-20",
+    "source_url": "https://razorpay.com/blog/?p=7190",
+    "checked_on": "2026-10-30",
+    "method": "manual first-party research",
+    "scope": "historical announcement; not asserted current"
+  },
+  {
+    "company": "Zoho",
+    "domain": "zoho.com",
+    "funding_event": null,
+    "funding_usd": null,
+    "funding_status": "privately held and bootstrapped, as self-described",
+    "employees_reported": null,
+    "fact_date": null,
+    "source_url": "https://www.zoho.com/privacy-commitment.html",
+    "checked_on": "2026-10-30",
+    "method": "manual first-party research",
+    "scope": "undated company statement; no numeric headcount inferred"
+  },
+  {
+    "company": "Cursor",
+    "domain": "cursor.com",
+    "funding_event": "Series D",
+    "funding_usd": 2300000000,
+    "employees_reported": "more than 300",
+    "fact_date": "2025-11-13",
+    "source_url": "https://cursor.com/blog/series-d",
+    "checked_on": "2026-10-30",
+    "method": "manual first-party research",
+    "scope": "historical announcement; not asserted current"
+  }
+]

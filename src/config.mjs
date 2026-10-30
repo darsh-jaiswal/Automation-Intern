@@ -10,7 +10,7 @@ export function config() {
     geminiKey: process.env.GEMINI_API_KEY || '',
     anthropicKey: process.env.ANTHROPIC_API_KEY || '',
     provider,
-    model: process.env.AI_MODEL || (provider === 'anthropic' ? process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5' : process.env.GEMINI_MODEL || 'gemini-2.5-flash'),
+    model: process.env.AI_MODEL || (provider === 'anthropic' ? process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6' : process.env.GEMINI_MODEL || 'gemini-2.5-flash'),
     workerToken: process.env.WORKER_TOKEN || '',
     port: Number(process.env.PORT || 4310),
     zohoAccounts: process.env.ZOHO_ACCOUNTS_URL || 'https://accounts.zoho.in',

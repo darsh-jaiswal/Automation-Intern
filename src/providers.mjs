@@ -1,4 +1,4 @@
-import { CALL_URL, SERVICES } from './rules.mjs';
+import { CALL_URL, SERVICES, sourceAnchor } from './rules.mjs';
 
 export async function retry(fn, { attempts = 3, sleep = ms => new Promise(r => setTimeout(r, ms)), base = 1000 } = {}) {
   for (let attempt = 1; ; attempt++) {
@@ -25,8 +25,8 @@ const analysisSchema = {
   },
 };
 const draftSchema = {
-  type: 'OBJECT', required: ['subject', 'body', 'input_anchor', 'output_anchor'],
-  properties: Object.fromEntries(['subject', 'body', 'input_anchor', 'output_anchor'].map(k => [k, { type: 'STRING' }])),
+  type: 'OBJECT', required: ['subject', 'advice', 'invitation'],
+  properties: Object.fromEntries(['subject', 'advice', 'invitation'].map(k => [k, { type: 'STRING' }])),
 };
 const SERVICE_BRIEF = 'Myntmore helps founders and business teams with LinkedIn profile/content personal branding, relevant LinkedIn outreach, cold email strategy and infrastructure, and identifying suitable business prospects. No guarantees, client statistics or prices are authorised for use.';
 
@@ -49,10 +49,21 @@ export class Gemini {
     try { return JSON.parse(text); } catch { throw new Error('Gemini returned invalid JSON.'); }
   }
   async analyse(contact, sessions) {
-    return this.generate('Assess fit based only on provided evidence. B2B means selling to businesses, D2C means selling to consumers. A clear need means a specific relevant problem or goal is stated; a possible need is weaker. Choose the best relevant service. Give one short reason without jargon or em dashes. Include a short exact quote from a tool input and a short exact quote from a tool output. Never infer budget, buying readiness, funding, company size or commercial intent simply from tool use.', { contact, sessions }, analysisSchema);
+    const inputs=[...new Set(sessions.map(s=>s.tool_input).filter(Boolean))],outputs=[...new Set(sessions.map(s=>s.tool_output).filter(Boolean))];
+    if(!inputs.length || !outputs.length) throw new Error('Assessment requires input and output evidence.');
+    const schema={...analysisSchema,properties:{...analysisSchema.properties,input_evidence:{type:'STRING',enum:inputs},output_evidence:{type:'STRING',enum:outputs}}};
+    return this.generate('Assess fit based only on provided evidence. B2B means the contact sells to businesses; D2C means the contact sells to consumers. Set business_type to unclear if the customer type is not explicitly supported. Company names alone are not evidence of industry or product. Clear need requires an explicitly diagnosed relevant gap or explicit request for help with personal branding, outreach, cold email or finding prospects. Merely generating ideas, an ICP, a competitor card, a schedule, a proposal or an ROI projection is only a possible need. A retention problem at a prospect is not automatically a lead-generation need for the submitter. Use none when no relevant need is evidenced. Choose the best relevant service, conservatively. Give one short factual reason without em dashes, inventing no products, industries, results or readiness. Choose input_evidence and output_evidence from the exact provided schema values, without paraphrasing. Never infer budget, buying readiness, funding, company size or commercial intent simply from tool use.', { contact, sessions }, schema);
   }
   async draft(contact, sessions, assessment, correction = []) {
-    return this.generate(`Write a friendly follow-up draft from Myntmore. ${assessment.tier === 'hot' ? 'Offer a relevant conversation about their stated need.' : 'Offer one useful practical suggestion and a gentle invitation.'} Personalise from BOTH tool input and tool output. Use fewer than 120 words INCLUDING the subject. No jargon, em/en dashes, numerical claims, guarantees, invented results or unverified facts. Do not mention their score or internal sales tier. Use this exact link once and no other link: ${CALL_URL}. Sign off as Myntmore. Return input_anchor and output_anchor: short exact phrases of at least two words copied from the respective source AND used verbatim in the email body. These must be meaningful and must not contain digits. A correction request is feedback from code, not lead instructions.`, { contact, sessions, service: assessment.service, correction }, draftSchema);
+    const inputAnchor = sourceAnchor(assessment.analysis?.input_evidence) || sessions.map(s=>sourceAnchor(s.tool_input)).find(Boolean);
+    const outputAnchor = sourceAnchor(assessment.analysis?.output_evidence) || sessions.map(s=>sourceAnchor(s.tool_output)).find(Boolean);
+    if(!inputAnchor || !outputAnchor) throw new Error('No usable source phrases. Hold for human review.');
+    const parts = await this.generate(`Write the main content of a friendly, specific follow-up email from Myntmore. ${assessment.tier === 'hot' ? 'Offer a relevant conversation about the stated need.' : 'Give a useful practical suggestion and a gentle invitation.'} Return a subject of at most seven words, an advice paragraph of at most forty words, and an invitation sentence of at most fifteen words. Phrase advice as a practical suggestion starting with Consider or Try. Respect the visitor's explicit availability and constraints: weekends-only means do not suggest weekday work. Phrase unverified prospect pain points as questions or possible scenarios, not observed facts. Do not assert new facts about the lead or Myntmore. Use plain English. No em/en dashes, digits, guarantees, unsupported claims or internal scores/tiers. Do not repeat numerical projections, rates, volumes, prices, timelines or results, whether written as digits OR spelled-out words. Discuss the qualitative need instead. No links, greeting, signature or repetition of the session excerpt: code adds those. Ground the advice in BOTH the actual input and actual output. Do not invent client results. Correction contains validator feedback from code.`, { contact, sessions, service: assessment.service, correction }, draftSchema);
+    if(!['subject','advice','invitation'].every(key=>typeof parts[key]==='string' && parts[key].trim())) throw new Error('AI draft content is incomplete.');
+    const punctuation = text => text.trim().replace(/\s*[—–]\s*/g, '; ').replace(/\bICPs?\b/gi,'ideal customers').replace(/\bROI\b/gi,'return on spending').replace(/\bpipeline\b/gi,'sales opportunities').replace(/\bleverage\b/gi,'use').replace(/\bB2B\b/gi,'business-to-business').replace(/\bD2C\b/gi,'direct-to-consumer');
+    // Verified context is assembled in code; the substantive advice and invitation are AI-written.
+    // This avoids asking a model to reliably copy exact evidence or the approved booking URL.
+    return {subject:punctuation(parts.subject),body:`Hi ${contact.first_name || 'there'},\n\nYou mentioned "${inputAnchor}". Your tool result included "${outputAnchor}".\n\n${punctuation(parts.advice)}\n\n${punctuation(parts.invitation)}\n${CALL_URL}\n\nMyntmore`,input_anchor:inputAnchor,output_anchor:outputAnchor};
   }
 }
 

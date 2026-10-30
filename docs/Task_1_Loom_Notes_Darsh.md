@@ -8,9 +8,9 @@ A draft-only lead follow-up engine: original CSV sessions go into Supabase, repe
 
 ## Current verification status
 
-Generated: 2026-10-30T13:21:49.107Z. AI provider: anthropic. Model: claude-haiku-4-5. Supabase configured: false; AI configured: true; Zoho configured: false. A configured credential is not proof that the integration works.
+Generated: 2026-10-30T16:22:31.156Z. AI provider: anthropic. Model: claude-sonnet-4-6. Supabase configured: true; AI configured: true; Zoho configured: false. A configured credential is not proof that the integration works.
 
-Latest database summary: Supabase live run has not been verified yet. Do not describe the cloud workflow as complete until verified.
+Latest database summary: {"contacts":19,"hot":1,"warm":13,"not_a_fit":5,"drafts":12,"review":4,"errors":0,"crm_synced":0}
 
 Automated tests use test doubles, not real AI responses. A live Anthropic structured-JSON smoke test has passed. Confirm the current Supabase and Zoho results on screen before recording.
 
@@ -30,9 +30,9 @@ Automated tests use test doubles, not real AI responses. A live Anthropic struct
 
 ## Scoring rules / explain these simply
 
-Every record starts at one point. Decision-making role adds up to three. Business fit adds up to three: B2B three, consumer-facing one, unclear zero. A clear relevant need adds two; a possible need one. A completed tool session adds one. Total: one to ten. Hot is eight to ten; Warm is five to seven; Not a fit is one to four. These are declared assignment rules, not a proven prediction of sales conversion.
+Every record starts at one point. Decision-making role adds up to three. Business fit adds up to three: B2B three, consumer-facing one, unclear zero. A clear relevant need adds two; a possible need one. A completed tool session adds one. A possible/adjacent need or consumer-facing context is capped at seven; no relevant need is capped at four. This prevents a senior title alone from making a weak-fit visitor Hot. Raw points and caps are visible. Hot is eight to ten; Warm is five to seven; Not a fit is one to four. These are declared assignment rules, not a proven prediction of sales conversion.
 
-AI supplies business type, need, service choice and a short reason backed by exact source quotes. Code supplies the points, thresholds, exclusions and review holds. Unknown or failed AI analysis is shown as provisional and does not produce an accepted draft.
+AI supplies business type, need, service choice and a short reason backed by exact source quotes. It writes the email subject, tailored advice and invitation. Code frames the email with verified source excerpts, greeting, approved call link and signature, then validates the result. Code also supplies the points, thresholds, exclusions and review holds. Unknown or failed AI analysis is shown as provisional and does not produce an accepted draft.
 
 ## Messy-data examples to remember
 
@@ -40,7 +40,7 @@ L03 + L11: one contact, two sessions. L02 + L15: separate contacts at one compan
 
 ## Draft checks and their limits
 
-The subject and body together must contain fewer than one hundred and twenty words. Code rejects numerical performance claims, em/en dashes, selected jargon, unapproved links and unsupported evidence anchors. A rejected draft is corrected at most twice after the first attempt. Persistent failures are visible. These checks do not prove every semantic claim is true; the draft stays subject to human review.
+The subject and body together must contain fewer than one hundred and twenty words. Code rejects numerical performance claims, em/en dashes, selected jargon, unapproved links, unsupported evidence anchors and suggestions outside explicit weekends-only or mornings-only availability. A rejected draft is corrected at most twice after the first attempt. Persistent failures are visible. An assistant editorial pass corrected availability and wording in the sample drafts and is recorded separately. These checks do not prove every semantic claim is true; the draft stays subject to human review before any real sending.
 
 ## Reliability choices
 
@@ -62,4 +62,4 @@ Run npm test. Check npm run status. Start the worker with npm start. Start n8n a
 
 ## Honest limitations / finish with these
 
-The worker runs locally and n8n must be on the same computer. The bonus enrichment on three real companies is not implemented. AI scores reflect a stated rubric rather than a measured conversion model. Human review is still necessary before sending any draft. If Supabase, n8n or Zoho has not been verified live, explicitly identify that integration as pending.
+The worker runs locally and n8n must be on the same computer. Three sourced manual company-enrichment examples are included in docs/Company_Enrichment_Examples.md; automatic company matching and enrichment refreshes are not implemented. Historical facts are explicitly dated. AI scores reflect a stated rubric rather than a measured conversion model. Human review is still necessary before sending any draft. If Supabase, n8n or Zoho has not been verified live, explicitly identify that integration as pending.

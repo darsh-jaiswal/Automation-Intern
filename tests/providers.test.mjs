@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Anthropic, Zoho } from '../src/providers.mjs';
 import { SupabaseStore } from '../src/store.mjs';
-import { setTimeout as sleep } from 'node:timers/promises';
+import { validateDraft, CALL_URL } from '../src/rules.mjs';
 
 test('Anthropic sends structured schema and interprets the actual response', async t => {
   let captured;
@@ -15,6 +15,24 @@ test('Anthropic sends structured schema and interprets the actual response', asy
 test('Anthropic truncation/refusal is a failure, not an accepted draft', async t => {
   t.mock.method(globalThis,'fetch',async()=>new Response(JSON.stringify({stop_reason:'max_tokens',content:[{type:'text',text:'{}'}]}),{status:200}));
   await assert.rejects(new Anthropic({anthropicKey:'test-key',model:'test-model'}).generate('Check',{}, {type:'OBJECT',properties:{}}),/incomplete/);
+});
+test('assessment schema constrains evidence to actual session values',async t=>{
+  let schema;
+  t.mock.method(globalThis,'fetch',async(_url,options)=>{schema=JSON.parse(options.body).output_config.format.schema;return new Response(JSON.stringify({stop_reason:'end_turn',content:[{type:'text',text:JSON.stringify({business_type:'b2b',need:'possible',service:'cold_email',reason:'The visitor describes a business buyer.',input_evidence:schema.properties.input_evidence.enum[0],output_evidence:schema.properties.output_evidence.enum[0]})}]}),{status:200});});
+  const ai=new Anthropic({anthropicKey:'test-key',model:'test-model'}),sessions=[{tool_input:'CNC-machined parts for electric vehicle makers',tool_output:'Competitor gaps: long lead times'}];
+  const result=await ai.analyse({first_name:'Test'},sessions);assert.deepEqual(schema.properties.input_evidence.enum,[sessions[0].tool_input]);assert.equal(result.output_evidence,sessions[0].tool_output);
+});
+test('draft assembly preserves source phrases and the approved link while normalising dashes', async t=>{
+  t.mock.method(globalThis,'fetch',async()=>new Response(JSON.stringify({stop_reason:'end_turn',content:[{type:'text',text:JSON.stringify({subject:'A useful next step',advice:'Focus your outreach on a clear buyer problem — then ask a relevant question.',invitation:'Would a short conversation help?'})}]}),{status:200}));
+  const ai=new Anthropic({anthropicKey:'test-key',model:'test-model',provider:'anthropic'});
+  const sessions=[{tool_input:'Industry: corporate travel. Offer: offsite planning',tool_output:'DM angles generated'}];
+  const draft=await ai.draft({first_name:'Pooja'},sessions,{tier:'hot',service:'linkedin_outreach',analysis:{input_evidence:'corporate travel',output_evidence:'DM angles generated'}});
+  assert.deepEqual(validateDraft(draft,sessions),[]);assert.ok(draft.body.includes(CALL_URL));assert.ok(!draft.body.includes('—'));
+});
+test('empty AI advice or invitation cannot become a valid framed email',async t=>{
+  t.mock.method(globalThis,'fetch',async()=>new Response(JSON.stringify({stop_reason:'end_turn',content:[{type:'text',text:JSON.stringify({subject:'Your profile',advice:'',invitation:''})}]}),{status:200}));
+  const ai=new Anthropic({anthropicKey:'test-key',model:'test-model',provider:'anthropic'});
+  await assert.rejects(ai.draft({first_name:'Test'},[{tool_input:'corporate travel',tool_output:'DM angles generated'}],{tier:'warm',service:'linkedin_outreach'}),/incomplete/);
 });
 test('Zoho suppresses workflows and Cadences for both insert and update', async t => {
   let upsert;

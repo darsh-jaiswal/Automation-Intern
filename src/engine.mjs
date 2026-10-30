@@ -19,36 +19,45 @@ export class Engine {
     return this.ingest(rows);
   }
   async ingest(rows) {
-    if (!Array.isArray(rows) || rows.length > 100) throw new Error('Provide between one and 100 sessions.');
+    if (!Array.isArray(rows) || !rows.length || rows.length > 100) throw new Error('Provide between one and 100 sessions.');
+    const [savedSessions, savedContacts] = await Promise.all([this.store.all('sessions'), this.store.all('contacts')]);
+    const existingSessions = new Map(savedSessions.map(s=>[s.id,s]));
+    const existingContacts = new Map(savedContacts.map(c=>[c.id,c]));
     const planned = new Map();
     for (const raw of rows) {
       if (!tidy(raw.lead_id) || !tidy(raw.source_tool)) throw new Error('Every session requires a stable lead_id and source_tool.');
       const row = normalize(raw);
       const payloadHash = hash(raw);
-      const existing = planned.get(row.lead_id) || await this.store.get('sessions', row.lead_id);
+      const existing = planned.get(row.lead_id) || existingSessions.get(row.lead_id);
       if (existing && existing.payload_hash !== payloadHash) throw new Error(`Session ${row.lead_id} already exists with different data. Preserve the original and supply a new session ID.`);
       planned.set(row.lead_id, { id: row.lead_id, contact_id: row.contact_id, source_tool: row.source_tool, created_at: row.created_at || '', tool_input: row.tool_input || '', tool_output: row.tool_output || '', raw, payload_hash: payloadHash, imported_at: now(), normalized: row });
     }
     let added = 0;
     for (const item of planned.values()) {
-      if (await this.store.get('sessions', item.id)) continue;
+      if (existingSessions.has(item.id)) continue;
       const { normalized, ...session } = item;
-      const existing = await this.store.get('contacts', session.contact_id);
+      const existing = existingContacts.get(session.contact_id);
       const contact = { id: session.contact_id, updated_at: now() };
       for (const field of CONTACT_FIELDS) contact[field] = normalized[field] || existing?.[field] || '';
       await this.store.put('contacts', contact);
       await this.store.put('sessions', session, { ignoreDuplicates: true });
+      existingContacts.set(contact.id,contact);
+      existingSessions.set(session.id,session);
       added++;
     }
     await this.event(null, 'import', 'info', `Received ${rows.length} rows; added ${added}; retained ${rows.length - added} unchanged duplicates.`);
-    return { received: rows.length, added, unchanged: rows.length - added, sessions: (await this.store.all('sessions')).length, contacts: (await this.store.all('contacts')).length };
+    return { received: rows.length, added, unchanged: rows.length - added, sessions: existingSessions.size, contacts: existingContacts.size };
+  }
+  assessmentId(contact, sessions) {
+    const ordered = [...sessions].sort((a,b)=>a.id.localeCompare(b.id));
+    const fingerprint = hash({ version: VERSION, model: this.model, contact: CONTACT_FIELDS.map(k=>contact[k]), sessions: ordered.map(s=>[s.id,s.payload_hash]) });
+    return `a_${fingerprint.slice(0,32)}`;
   }
   async work(contactId) {
     const contact = await this.store.get('contacts', contactId);
     if (!contact) throw new Error('Contact not found.');
     const sessions = (await this.store.all('sessions', { contact_id: contactId })).sort((a,b) => a.id.localeCompare(b.id));
-    const fingerprint = hash({ version: VERSION, model: this.model, contact: CONTACT_FIELDS.map(k => contact[k]), sessions: sessions.map(s => [s.id, s.payload_hash]) });
-    return { contact, sessions, id: `a_${fingerprint.slice(0, 32)}` };
+    return { contact, sessions, id: this.assessmentId(contact,sessions) };
   }
   async assess(contactId) {
     const { contact, sessions, id } = await this.work(contactId);
@@ -139,7 +148,7 @@ export class Engine {
     const [contacts, sessions, allAssessments, alerts, events] = await Promise.all(['contacts', 'sessions', 'assessments', 'alerts', 'events'].map(t => this.store.all(t)));
     const assessments = [];
     for (const c of contacts) {
-      const { id } = await this.work(c.id);
+      const id = this.assessmentId(c,sessions.filter(s=>s.contact_id===c.id));
       const a = allAssessments.find(item => item.id === id);
       if (a) assessments.push(a);
     }

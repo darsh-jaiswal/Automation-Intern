@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { parse } from 'csv-parse/sync';
 import { MemoryStore } from '../src/store.mjs';
 import { Engine } from '../src/engine.mjs';
-import { normalize, score, inspect, validateDraft, CALL_URL } from '../src/rules.mjs';
+import { normalize, score, inspect, validateDraft, CALL_URL, sourceAnchor } from '../src/rules.mjs';
 import { retry } from '../src/providers.mjs';
 
 const rows = parse(await readFile(new URL('../leads.csv', import.meta.url), 'utf8'), { columns: true });
@@ -55,6 +55,9 @@ test('scoring is bounded and thresholds are deterministic', () => {
   assert.equal(score(contact, sessions, analysis).tier, 'hot');
   assert.deepEqual(score(contact, sessions, analysis), score(contact, sessions, analysis));
   assert.equal(score(contact, sessions, { ...analysis, business_type: 'd2c', need: 'possible' }).tier, 'warm');
+  assert.equal(score(contact, sessions, { ...analysis, need:'possible' }).score,7);
+  assert.equal(score(contact, sessions, { ...analysis, need:'none' }).tier,'not_a_fit');
+  assert.equal(score(contact, sessions, { ...analysis, business_type:'d2c' }).tier,'warm');
 });
 test('free/personal email is not an exclusion', () => { assert.equal(inspect(normalize(row('L12')), [row('L12')]).excluded, false); });
 test('a staffing company selling to hiring managers is not a job seeker', () => {
@@ -116,4 +119,19 @@ test('transient requests retry; non-transient failures stop immediately', async 
   assert.equal(await retry(async () => { calls++; if(calls < 3) { const e=Error('transient'); e.retryable=true; throw e; } return 'ok'; }, { sleep }), 'ok');
   assert.equal(calls, 3); calls = 0;
   await assert.rejects(retry(async () => { calls++; throw Error('bad credential'); }, { sleep })); assert.equal(calls, 1);
+});
+test('source anchors are copied from evidence and avoid numerical fragments',()=>{
+  for(const r of rows.filter(r=>r.tool_input&&r.tool_output)){
+    for(const field of ['tool_input','tool_output']){const a=sourceAnchor(r[field]);if(a){assert.ok(r[field].includes(a));assert.ok(!/\d/.test(a));assert.ok(a.split(/\s+/).length>=2);}}
+  }
+  assert.equal(sourceAnchor('Projected 3 deals, revenue $18,000, ROI 100%'),null);
+  assert.equal(sourceAnchor('Exported the PDF.'),'Exported the PDF');
+  assert.equal(sourceAnchor('Payment reconciliation software for D2C brands'),'Payment reconciliation software');
+  assert.equal(sourceAnchor('Target ICP: CFOs'),null);
+  assert.equal(sourceAnchor('ICPs and value propositions generated'),'value propositions generated');
+});
+test('drafts cannot suggest work outside an explicitly stated availability',async()=>{
+  const draft=await fakeAi.draft();
+  assert.ok(validateDraft({...draft,body:draft.body+' Prepare this on Friday evening.'},[{...row('L12'),tool_input:row('L12').tool_input+' Lifestyle: weekends only.'}]).includes('Respect weekends-only availability'));
+  assert.ok(validateDraft({...draft,body:draft.body+' Work on this in the evening.'},[{...row('L12'),tool_input:row('L12').tool_input+' Lifestyle: mornings only.'}]).includes('Respect mornings-only availability'));
 });

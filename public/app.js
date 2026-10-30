@@ -16,6 +16,8 @@ async function refresh() {
 }
 function render() {
   const s = state.summary;
+  $('hot-alerts').hidden = !state.alerts.length;
+  $('alert-list').replaceChildren(...state.alerts.map(alert=>{const n=el('div',undefined,'section-top');const button=el('button','Review draft','secondary');button.addEventListener('click',()=>detail(alert.contact_id));n.append(el('p',alert.message),button);return n;}));
   const metrics = [['Original sessions', state.sessions.length], ['People', state.contacts.length], ['Hot leads', s.hot], ['Validated drafts', s.drafts], ['Review / errors', s.review + s.errors]];
   $('metrics').replaceChildren(...metrics.map(([label,value]) => { const n=el('div',undefined,'metric'); n.append(el('strong',value), el('span',label)); return n; }));
   const filter = $('filter').value;

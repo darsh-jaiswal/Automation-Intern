@@ -1,8 +1,9 @@
 import { createHash } from 'node:crypto';
 
-export const VERSION = 'fit-v1.0';
+export const VERSION = 'fit-v1.1-prompts-v1.3';
 export const CALL_URL = 'https://myntmore.com/founder-meeting';
 export const SERVICES = ['personal_branding', 'linkedin_outreach', 'cold_email', 'lead_generation'];
+const JARGON_OR_PROMISE = /\b(?:guarantee\w*|promise\w*|synerg\w*|leverage|ICPs?|ROI|pipeline|hyper.?personali\w*|game.?changer|revolutioni\w*)\b/i;
 const canonical = value => Array.isArray(value) ? value.map(canonical) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, canonical(value[key])])) : value;
 export const hash = (value) => createHash('sha256').update(typeof value === 'string' ? value : JSON.stringify(canonical(value))).digest('hex');
 export const tidy = (v) => String(v ?? '').trim().replace(/\s+/g, ' ');
@@ -43,11 +44,31 @@ export function score(contact, sessions, analysis = null) {
     activity: sessions.some(s => s.tool_input && s.tool_output) ? 1 : 0,
   };
   const total = Object.values(points).reduce((a, b) => a + b, 0);
-  return { score: total, tier: total >= 8 ? 'hot' : total >= 5 ? 'warm' : 'not_a_fit', service: analysis?.service || null, points, reason: analysis?.reason || 'Provisional rule score. Business need cannot be assessed without usable context and Gemini.', checks };
+  const cap = Math.min(analysis?.need === 'none' ? 4 : analysis?.need === 'possible' ? 7 : 10, analysis?.business_type === 'd2c' ? 7 : 10);
+  const finalScore = Math.min(total,cap);
+  if(cap<10){points.total_before_cap=total;points.maximum_for_context=cap;}
+  const capReason = finalScore<total ? analysis?.business_type === 'd2c' ? ' Consumer-facing context is capped at Warm.' : analysis?.need === 'none' ? ' No relevant service need: capped at Not a fit.' : ' Possible need only: capped at Warm.' : '';
+  return { score: finalScore, tier: finalScore >= 8 ? 'hot' : finalScore >= 5 ? 'warm' : 'not_a_fit', service: analysis?.service || null, points, reason: (analysis?.reason || 'Provisional rule score. Business need cannot be assessed without usable context and AI.')+capReason, checks };
 }
 
 export function contextFor(sessions) {
   return sessions.map(({ id, source_tool, tool_input, tool_output }) => ({ session_id: id, source_tool, tool_input, tool_output }));
+}
+
+export function sourceAnchor(text) {
+  const stop = new Set('a an the for and to of with in on at per month months week weeks day days year years am pm'.split(' '));
+  const phrases = (String(text).match(/\b[A-Za-z][A-Za-z'-]*\b(?:[ \t]+\b[A-Za-z][A-Za-z'-]*\b){1,5}/g) || []).flatMap(phrase=>{
+    const words=phrase.split(/\s+/), windows=[];
+    for(let start=0;start<words.length-1;start++)for(let end=start+2;end<=words.length;end++)windows.push(words.slice(start,end).join(' '));
+    return windows;
+  });
+  const candidates = phrases.map(phrase => {
+    const words = phrase.split(/\s+/);
+    while(words.length && stop.has(words[0].toLowerCase())) words.shift();
+    while(words.length && stop.has(words.at(-1).toLowerCase())) words.pop();
+    return words.join(' ');
+  }).filter(phrase => phrase.split(/\s+/).length >= 2 && phrase.length <= 65 && !JARGON_OR_PROMISE.test(phrase));
+  return candidates.sort((a,b) => b.length - a.length)[0] || null;
 }
 
 export function validateAnalysis(a, sessions) {
@@ -71,14 +92,17 @@ export function validateDraft(draft, sessions) {
   if (text.trim().split(/\s+/).length >= 120) errors.push('Must be under 120 words including subject');
   if (/[—–]/.test(text)) errors.push('No em or en dashes');
   if (/\d/.test(text)) errors.push('No numerical claims in drafts');
+  const availability = sessions.map(s=>s.tool_input||'').join('\n');
+  if (/weekends only/i.test(availability) && /\b(?:Monday|Tuesday|Wednesday|Thursday|Friday|weekdays?)\b/i.test(draft.body)) errors.push('Respect weekends-only availability');
+  if (/mornings only/i.test(availability) && /\b(?:afternoon|evening|night)\b/i.test(draft.body)) errors.push('Respect mornings-only availability');
   if (/\b(?:one|two|three|four|five|six|seven|eight|nine|ten|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|double|triple)\b[\w\s-]{0,45}\b(?:meetings?|leads?|clients?|sales|revenue|percent|deals?|replies|engagement)\b/i.test(text)) errors.push('No written-out quantitative performance claims');
   if (/\bour clients (?:get|see|achieve|receive)|\bwe(?:'ve| have) (?:helped|generated|delivered|achieved)/i.test(text)) errors.push('No unverified client performance claims');
-  if (/\b(?:guarantee\w*|promise\w*|synerg\w*|leverage|ICP|ROI|pipeline|hyper.?personali\w*|game.?changer|revolutioni\w*)\b/i.test(text)) errors.push('Unsupported promise or jargon');
+  if (JARGON_OR_PROMISE.test(text)) errors.push('Unsupported promise or jargon');
   const urls = text.match(/https?:\/\/[^\s<>]+/gi) || [];
   if (urls.length !== 1 || urls[0] !== CALL_URL) errors.push('Use the exact approved call link once, without suffixes or query parameters');
   const remainder = text.replace(CALL_URL, '');
   if (/(?:https?:\/\/|www\.|[\w-]+\.(?:com|org|net|io|ai|in|example)(?:\b|\/))/i.test(remainder)) errors.push('Other links are not allowed');
-  if (/guaranteed|will (?:increase|boost|deliver|double|triple|generate)|\b(?:best|leading|award-winning|proven results)\b/i.test(text)) errors.push('Unsupported marketing claim');
+  if (/guaranteed|will (?:increase|boost|deliver|double|triple|generate)|\b(?:we|myntmore) (?:are|is) (?:the )?(?:best|leading|award-winning)|\bproven results\b/i.test(text)) errors.push('Unsupported marketing claim');
   for (const [key, field] of [['input_anchor', 'tool_input'], ['output_anchor', 'tool_output']]) {
     const anchor = draft[key];
     if (typeof anchor !== 'string' || anchor.trim().split(/\s+/).length < 2 || !sessions.some(s => String(s[field] || '').toLowerCase().includes(anchor.toLowerCase())) || !draft.body.toLowerCase().includes(anchor.toLowerCase())) errors.push(`${key} must appear in the source and email body`);

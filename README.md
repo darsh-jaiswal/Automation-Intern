@@ -2,6 +2,8 @@
 
 Myntmore Round 2, Task 1. Draft-only lead follow-up engine by Darsh Jaiswal.
 
+Verified locally against live Supabase and Anthropic: 20 sessions, 19 contacts, 12 validated drafts, zero processing errors, and a successful n8n replay with no duplicate records/drafts/alerts. Zoho OAuth authorization and live CRM sync remain pending; see `docs/VERIFICATION.md`.
+
 The sample contains 20 fictional tool sessions and 19 people. Original sessions are retained. Repeat visitors are grouped by normalised email (or LinkedIn URL if email is missing). Different people at one company remain separate.
 
 ## Run locally
@@ -25,6 +27,8 @@ Generate/import `workflows/task-one.json` into n8n (tested target: n8n 2.45.7). 
 
 The manual flow imports the CSV, lists contacts, loops through people, assesses fit, drafts/validates, saves CRM text and creates Hot alerts. The authenticated webhook accepts new tool sessions, ready for Task 2. The worker and n8n run on the same computer; cloud n8n needs a separately deployed HTTPS worker, not this loopback URL.
 
+The exported workflow is inactive. Publish/activate it in n8n before expecting its production webhook to listen. Manual/CLI sample execution does not require activation.
+
 `node scripts/workflow.mjs --local-credential` generates a gitignored `.local/n8n-credential.json` for CLI import. Do not commit or show that file in the Loom.
 
 For a project-isolated local n8n install in PowerShell:
@@ -42,9 +46,9 @@ Complete n8n's local owner setup yourself when prompted. It stores a credential,
 
 ## Rules versus AI
 
-Code handles normalisation, grouping, test/job-seeker exclusions, suspicious input, missing fields, final scoring, routing, validation, deduplication, retries and persistence. AI interprets the business need, selects one of four services, cites exact input/output evidence, and writes a short email draft.
+Code handles normalisation, grouping, test/job-seeker exclusions, suspicious input, missing fields, final scoring, routing, validation, deduplication, retries and persistence. AI interprets the business need, selects one of four services, cites exact input/output evidence, and writes the email subject, tailored advice and invitation. Code adds verified source excerpts, greeting, approved call link and signature, then validates the assembled draft.
 
-Scoring: base 1 + role (0–3) + business fit (0–3) + stated need (0–2) + completed tool activity (0–1). Hot: 8–10; Warm: 5–7; Not a fit: 1–4. These are transparent design choices, not a measured sales-conversion model. Missing context or failed AI analysis produces a provisional score and visible review/error status, not a fabricated AI result.
+Scoring: base 1 + role (0–3) + business fit (0–3) + stated need (0–2) + completed tool activity (0–1). Hot: 8–10; Warm: 5–7; Not a fit: 1–4. A possible/adjacent need and a consumer-facing context are capped at 7; no evidenced relevant need is capped at 4. This prevents a senior job title alone from making a weak-fit visitor Hot. Raw points and any cap are visible. These are transparent design choices, not a measured sales-conversion model. Missing context or failed AI analysis produces a provisional score and visible review/error status, not a fabricated AI result.
 
 Explicit test and job-seeking records receive score 1 and no draft. Suspicious prompt instructions receive a conservative score 1 and human-review status. Missing email does not reduce business fit but prevents drafting/sync. Potential service overlap is reviewed. A personal email domain is not an exclusion.
 
@@ -64,7 +68,7 @@ Each draft must be under 120 words including subject, contain the approved call 
 
 `npm run status` reports credential presence and, when connected, current database counts. Credential presence alone is not integration verification. The dashboard shows processing and CRM status separately.
 
-Task 2, Task 3, public deployment, a recorded Loom, and bonus company enrichment are outside this Task 1 implementation. The notes include an honest limitations section. See `docs/VERIFICATION.md` for the latest checks actually run.
+Task 2, Task 3, public deployment and a recorded Loom are outside this Task 1 implementation. Three sourced manual company-enrichment examples are included in `docs/Company_Enrichment_Examples.md`; automatic matching/refresh is not implemented. The notes include an honest limitations section. See `docs/VERIFICATION.md` for the latest checks actually run.
 
 ## References
 

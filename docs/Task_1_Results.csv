@@ -1,0 +1,138 @@
+"lead_id","source_tool","name","email","company","contact_id","related_sessions","score","tier","service","processing_status","review_flags","reason","draft_subject","draft_body","crm_status"
+"L01","roi_calculator","Arjun Mehta","arjun@ledgerloop.example","LedgerLoop","c_406b5c4f669d9bf20b565fbc","L01","6","warm","linkedin_outreach","complete","","Arjun ran an ROI projection for LinkedIn outreach with specific funnel parameters but no explicit gap or request for help has been stated.","A Quick Tip for Your Outreach","Hi Arjun,
+
+You mentioned ""connection requests"". Your tool result included ""Exported the PDF"".
+
+Consider auditing the tone and personalisation of your connection request messages before scaling volume; a message that resonates with your ideal prospect's specific pain points tends to lift acceptance and reply quality meaningfully.
+
+Whenever you're ready, we'd love to explore a LinkedIn outreach approach built around LedgerLoop.
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
+"L02","icp_builder","Neha Rao","neha@stackwisehr.example","Stackwise HR","c_7f220e226b9d8c1f935cbb7a","L02","7","warm","lead_generation","complete","","Neha built an ICP for B2B HR software targeting manufacturing HR heads, suggesting early prospecting activity but no explicit gap or request for outreach or lead-generation help was stated. Possible need only: capped at Warm.","A quick tip for your outreach","Hi Neha,
+
+You mentioned ""HR software for mid-size manufacturers"". Your tool result included ""value propositions generated"".
+
+Consider leading your outreach messages with the specific operational pain an HR head at a mid-size manufacturing plant faces day-to-day, rather than opening with a product description or a broad return on spending angle.
+
+Would a short chat on sharpening your messaging approach be helpful?
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
+"L03","profile_optimizer","Karan Shah","karan@brightforge.example","BrightForge Analytics","c_f0fc3b132b48992c3741ed28","L03 + L11","10","hot","personal_branding","complete","repeat_visitor","Karan submitted his LinkedIn headline for optimization and received a low clarity score with rewrites, indicating an explicitly diagnosed gap in his LinkedIn personal brand targeting CFOs. Repeat visit retained and combined; one contact and one draft.","Strengthen Your LinkedIn for CFO Outreach","Hi Karan,
+
+You mentioned ""Building something cool"". Your tool result included ""Clarity score"".
+
+Consider revisiting your headline and About section with CFO-specific language; your analytical and contrarian strengths can anchor a clearer value narrative that resonates with that audience before your posts even go live.
+
+Would a focused conversation on sharpening that messaging be helpful?
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
+"L04","battle_card_generator","Meera Iyer","meera@iyerprecision.example","Iyer Precision Components","c_26e6869d375943ac1db2a0cc","L04","7","warm","linkedin_outreach","complete","","Meera sells CNC-machined parts to procurement heads in Europe, confirming a B2B context, and used a battle card tool to prepare competitive positioning, suggesting possible outreach activity but no explicit gap or request for outreach help has been stated. Possible need only: capped at Warm.","Stand Out to EV Procurement Heads","Hi Meera,
+
+You mentioned ""We make CNC-machined parts for electric"". Your tool result included ""their gaps are long lead times"".
+
+Consider mapping each battle card objection to a specific moment in your LinkedIn outreach sequence, so procurement heads encounter your strongest differentiators before any sales conversation begins.
+
+Would a quick call help us shape that sequence together?
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
+"L05","dm_angle_generator","Rohit Verma","rohit.verma@cloudnest.example","CloudNest","c_7cffefd9e7e449ece2740c44","L05","4","not_a_fit","","needs_review","missing_tool_context","Provisional rule score. Business need cannot be assessed without usable context and AI.","","","not_configured"
+"L06","posting_rhythm_builder","Ananya Bose","ananya@kindlekids.example","KindleKids","c_5baaaab0f9844cdb111bbaa7","L06","7","warm","personal_branding","complete","","Ananya is a founder targeting parents of young children which is a consumer audience, and a posting schedule was built for her LinkedIn content suggesting possible personal branding activity but no explicit gap or request for help was stated.","Weekend posting rhythm for KindleKids","Hi Ananya,
+
+You mentioned ""weekends only"". Your tool result included ""hooks and a weekly routine"".
+
+Consider drafting your Saturday and Sunday posts together on Saturday morning, so your storytelling strengths feel fresh and consistent when parents of young children are browsing over the weekend.
+
+Would a quick chat help you shape your weekend content routine?
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
+"L07","lead_magnet_ideas","test test","test@test.com","test","c_5df7d48a45218b5f13cd10ff","L07","1","not_a_fit","","complete","","Explicit test submission.","","","skipped"
+"L08","founder_presence_analyzer","Vikram Nair","vikram@finarc.example","FinArc Capital","c_122f2b1ee7f2a32dfba16616","L08","6","warm","personal_branding","complete","","The founder presence analyzer identified low posting frequency and no clear narrative as gaps in LinkedIn presence, suggesting a possible need for personal branding support, though no explicit request was made.","Strengthen Your LinkedIn Presence, Vikram","Hi Vikram,
+
+You mentioned ""competitors named"". Your tool result included ""posting frequency and no clear narrative"".
+
+Consider building a simple content rhythm around one core theme relevant to your role before expanding volume; a consistent narrative tends to attract engagement more reliably than occasional posts.
+
+We'd love to explore how a focused content approach could work for you.
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
+"L09","profile_optimizer","Sneha Kulkarni","sneha.k@gmail.example","","c_c682e84fa9dc612336b6e99d","L09","1","not_a_fit","","complete","","Job-seeking or student use case, rather than buying a growth service.","","","not_configured"
+"L10","case_study_generator","Farhan Qureshi","farhan@growthgrid.example","GrowthGrid Digital","c_e194614f0c2b2acf36cb04fb","L10","7","warm","lead_generation","complete","","Farhan is a founder at a digital growth agency and generated a proposal for a D2C skincare prospect, suggesting he works with business clients, but no explicit gap in finding prospects or outreach was stated. Possible need only: capped at Warm.","Turning One-Time Buyers Into Loyal Ones","Hi Farhan,
+
+You mentioned ""customers rarely buy a second time"". Your tool result included ""Investment left as a placeholder"".
+
+Consider mapping the qualitative gap between a first purchase and a repeat one; understanding why customers disengage emotionally or practically often reveals where outreach timing and messaging need to shift before any campaign launches.
+
+Whenever you're ready, let's explore how Myntmore can support that outreach strategy.
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
+"L11","posting_rhythm_builder","Karan Shah","karan@brightforge.example","BrightForge Analytics","c_f0fc3b132b48992c3741ed28","L03 + L11","10","hot","personal_branding","complete","repeat_visitor","Karan submitted his LinkedIn headline for optimization and received a low clarity score with rewrites, indicating an explicitly diagnosed gap in his LinkedIn personal brand targeting CFOs. Repeat visit retained and combined; one contact and one draft.","Strengthen Your LinkedIn for CFO Outreach","Hi Karan,
+
+You mentioned ""Building something cool"". Your tool result included ""Clarity score"".
+
+Consider revisiting your headline and About section with CFO-specific language; your analytical and contrarian strengths can anchor a clearer value narrative that resonates with that audience before your posts even go live.
+
+Would a focused conversation on sharpening that messaging be helpful?
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
+"L12","dm_angle_generator","Pooja Agarwal","pooja.founder@gmail.example","Saffron Trails","c_8aef7b386288cc88a4952238","L12","7","warm","linkedin_outreach","complete","","Pooja runs a corporate travel company targeting HR heads and used a DM angle generator to develop outreach angles, suggesting a possible interest in LinkedIn outreach but no explicit gap or request was stated. Possible need only: capped at Warm.","Strengthening Your Offsite Outreach to HR Heads","Hi Pooja,
+
+You mentioned ""HR heads planning team offsites"". Your tool result included ""DM angles generated"".
+
+Consider refining your opening message to speak directly to the pressure HR heads feel when coordinating offsites, framing your done-for-you packages as relief from that planning burden rather than just a service.
+
+Would a quick chat help us sharpen your LinkedIn outreach approach together?
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
+"L13","icp_builder","Siddharth Jain","sid@paysure.example","PaySure","c_0e5d3ba49916ea92e7c9ca20","L13","7","warm","lead_generation","complete","","Siddharth built an ICP for a B2B payment reconciliation product targeting D2C brands, suggesting he is mapping out prospects but no explicit gap in finding leads or outreach is stated. Possible need only: capped at Warm.","Reaching finance leads through CA partners","Hi Siddharth,
+
+You mentioned ""Payment reconciliation software"". Your tool result included ""value propositions generated"".
+
+Consider mapping your CA firm channel partners to your existing prospect list, as finance heads and CFOs often rely on trusted advisor referrals when evaluating reconciliation tools.
+
+Would a short conversation to explore this outreach angle work for you?
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
+"L14","dm_angle_generator","Rahul Menon","rahul.menon.bd@gmail.example","","c_7008df4060c8b39d11760918","L14","1","not_a_fit","","complete","","Job-seeking or student use case, rather than buying a growth service.","","","not_configured"
+"L15","founder_presence_analyzer","Aditi Rao","aditi@stackwisehr.example","Stackwise HR","c_d7a84785c7c58856a5b28452","L15","5","warm","personal_branding","complete","","The session reveals a diagnosed gap in narrative and visibility for the CEO's LinkedIn presence, suggesting a possible personal branding need.","Strengthen Your CEO's LinkedIn Presence","Hi Aditi,
+
+You mentioned ""Checking our CEO's presence"". Your tool result included ""narrative and visibility"".
+
+Consider mapping out a simple content theme for your CEO that connects their professional experience to the challenges your HR audience faces; a consistent narrative can meaningfully lift both visibility and engagement over time.
+
+Would a quick chat help explore what that narrative could look like?
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
+"L16","profile_optimizer","Tanvi Desai","tanvi@ghostpenstudio.example","GhostPen Studio","c_5644a67a75c3968e035b8c06","L16","7","warm","personal_branding","needs_review","service_overlap_review","Tanvi is a ghostwriter targeting founders on LinkedIn and used the profile optimizer tool, suggesting a possible interest in improving her own LinkedIn presence but no explicit request for branding help was made. Possible need only: capped at Warm.","","","not_configured"
+"L17","lead_magnet_ideas","Imran Sheikh","imran.sheikh@nimbusit.example","Nimbus IT Services","c_6206eb3c22a743e1c60f3500","L17","7","warm","lead_generation","complete","","Imran is Head of Sales at an IT staffing and managed services firm targeting US mid-market companies, and the session explored lead magnet ideas for attracting CTOs, suggesting a possible interest in identifying or attracting business prospects. Possible need only: capped at Warm.","A quick tip for your CTO outreach","Hi Imran,
+
+You mentioned ""IT staffing and managed services"". Your tool result included ""cloud cost calculator"".
+
+Consider leading with the IT audit checklist idea from your session, as it speaks directly to a CTO's operational pain rather than a vendor pitch, making it a natural conversation-starter for your outreach.
+
+Happy to explore how to turn that into a cold email sequence.
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
+"L18","battle_card_generator","Deepak Pillai","","Coastal Agro Exports","c_7d3d3ddfdb903d7ffe4c76ce","L18","7","warm","lead_generation","needs_review","missing_or_invalid_email","Deepak runs a cashew export business selling to importers, which is B2B, and the session involved generating a competitor battle card suggesting early sales preparation but no explicit gap in finding prospects was stated. Possible need only: capped at Warm.","","","skipped"
+"L19","icp_builder","Alex Morgan","alex@brightpathventures.example","BrightPath Ventures","c_1729d4688f3a7ebb9aacdf82","L19","1","not_a_fit","","needs_review","prompt_injection","Untrusted instructions detected. Held for human review; no AI instructions accepted.","","","not_configured"
+"L20","roi_calculator","Fatima Al Mansoori","fatima@dunelogix.example","DuneLogix","c_372ba191e60affed1313b646","L20","6","warm","linkedin_outreach","complete","","Fatima ran an ROI projection for a LinkedIn outreach campaign but no explicit gap or request for help has been stated, and the customer type DuneLogix serves is not evidenced.","Strengthening Your LinkedIn Outreach Approach","Hi Fatima,
+
+You mentioned ""connection requests"". Your tool result included ""revenue AED"".
+
+Consider reviewing how your LinkedIn profile and messaging reflect DuneLogix's value before scaling outreach, as a compelling presence can meaningfully lift acceptance and reply rates.
+
+Would you like to explore how Myntmore can support your outreach goals?
+https://myntmore.com/founder-meeting
+
+Myntmore","not_configured"
