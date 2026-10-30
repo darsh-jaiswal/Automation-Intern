@@ -1,0 +1,41 @@
+{
+  "checked_at": "2026-10-30T20:45:18.417Z",
+  "user_browser_permission_granted": true,
+  "supported_browser_inventory": {
+    "apps": 0,
+    "browsers": 0
+  },
+  "errors": [
+    "Computer Use native pipe is unavailable: failed to connect native pipe: The system cannot find the file specified. (os error 2)",
+    "The browser access host is unavailable"
+  ],
+  "recovery": "Reset both supported JavaScript sessions, reinitialised and retried discovery; errors persisted.",
+  "remaining_answers": {
+    "ChatGPT": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Perplexity": [
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "complete_answers": {
+    "Gemini": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Perplexity": [
+      1
+    ]
+  },
+  "required_next_step": "Restore the browser/Computer Use host connection, or have the user supply the remaining actual answers/screenshots. No further permission request is needed."
+}

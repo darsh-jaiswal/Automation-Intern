@@ -80,7 +80,7 @@ Each draft must be under 120 words including subject, contain the approved call 
 
 `npm run status` reports credential presence and, when connected, current database counts. Credential presence alone is not integration verification. The dashboard shows processing and CRM status separately.
 
-Task 2 is in `hook-grader/`; Task 3, the camera-on Loom recording and final submission remain. Three sourced manual company-enrichment examples are included in `docs/Company_Enrichment_Examples.md`; automatic matching/refresh is not implemented. The notes include limitations. Task 1's original verification is in `docs/VERIFICATION.md`; Task 2's live evidence is recorded separately.
+Task 2 is in `hook-grader/`. Task 3's one-page bug analysis is complete, while its AI comparison has **6/15 real answers** and awaits ChatGPT browser access and Perplexity sign-in; see [Task 3 draft status](docs/task3/README.md). The camera-on Loom recording and final submission remain. Three sourced manual company-enrichment examples are included in `docs/Company_Enrichment_Examples.md`; automatic matching/refresh is not implemented. The notes include limitations. Task 1's original verification is in `docs/VERIFICATION.md`; Task 2's live evidence is recorded separately.
 
 ## References
 

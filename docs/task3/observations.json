@@ -1,0 +1,389 @@
+{
+  "status": "DRAFT: 6 of 15 agency answers captured; ChatGPT and four Perplexity answers require browser access/sign-in.",
+  "collected_on_local": "2026-10-31",
+  "timezone": "Asia/Kolkata",
+  "protocol": "Identical neutral prompts; fresh conversations; signed-out default Search/Flash-Lite interfaces. Technical trial captures retained separately. Not an endorsement or a stable rank benchmark.",
+  "rows": [
+    {
+      "provider": "ChatGPT",
+      "question_id": 1,
+      "prompt": "Which agencies in Mumbai help B2B founders get qualified sales meetings through LinkedIn outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "status": "unavailable",
+      "reason": "ChatGPT browser access challenge prevented a model answer.",
+      "appears": "Not observed",
+      "position": "Unavailable",
+      "others": "No agency answer obtained",
+      "summary": "ChatGPT browser access challenge prevented a model answer.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    },
+    {
+      "provider": "Perplexity",
+      "question_id": 1,
+      "prompt": "Which agencies in Mumbai help B2B founders get qualified sales meetings through LinkedIn outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "observed_at": "2026-10-30T20:26:04.721Z",
+      "response_url": "https://www.perplexity.ai/search/26fc8f7c-0998-4a4a-a492-dda5b20a68b1",
+      "mode": "Search (visible default, signed out; model unspecified)",
+      "guest": true,
+      "status": "complete",
+      "answer": "Myntmore — listed in Mumbai for B2B LinkedIn marketing; its profile describes lead generation and booking for founders, CXOs, and consultants.\nrevenuebase\n\nAAmber Communications LAB — listed as a Mumbai-based LinkedIn lead-generation agency, though the available result doesn’t verify that it specifically books qualified sales meetings.\nrevenuebase\n\nLemniscate Growth — named among Mumbai’s B2B lead-generation companies, but the available source doesn’t verify LinkedIn outreach specifically.\nlemniscategrowth\n\nI couldn’t verify enough evidence to confidently name five agencies that meet both criteria.",
+      "links": [
+        {
+          "text": "revenuebase",
+          "url": "https://revenuebase.ai/companies/b2b-linkedin-marketing-agencies/india/mumbai"
+        },
+        {
+          "text": "revenuebase",
+          "url": "https://revenuebase.ai/companies/linkedin-lead-generation-agencies/india/mumbai"
+        },
+        {
+          "text": "lemniscategrowth",
+          "url": "https://lemniscategrowth.com/blogs/top-b2b-lead-generation-companies-mumbai.html"
+        }
+      ],
+      "body": "New\n⌃I\nComputer\nAutomations\nArtifacts\nCustomize\nProjects\nNo projects\nRecents\nWhich agencies in Mumbai help B2B founders get qualified sales meetings through LinkedIn outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\nView all\nView plans\nSign In\nAnswer\nLinks\nImages\nShare\n1:55 AM\n\nWhich agencies in Mumbai help B2B founders get qualified sales meetings through LinkedIn outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\n\nFinished\n\nMyntmore — listed in Mumbai for B2B LinkedIn marketing; its profile describes lead generation and booking for founders, CXOs, and consultants.\nrevenuebase\n\nAAmber Communications LAB — listed as a Mumbai-based LinkedIn lead-generation agency, though the available result doesn’t verify that it specifically books qualified sales meetings.\nrevenuebase\n\nLemniscate Growth — named among Mumbai’s B2B lead-generation companies, but the available source doesn’t verify LinkedIn outreach specifically.\nlemniscategrowth\n\nI couldn’t verify enough evidence to confidently name five agencies that meet both criteria.\n\nSources\n7\n\n\n\n\nAsk a follow-up\nSearch\nComputer\nModel\nCookie Policy\n\nWe and our partners use cookies, pixels, SDKs, APIs, and server-to-server integrations. Perplexity does not use these technologies to sell third party ads on our services. Perplexity uses them to measure our ad performance on third party partner websites and to improve our services. If you continue using Perplexity, without adjusting your settings, you are consenting to these technologies.\n\nCookie Policy\nWe and our partners use cookies, pixels, SDKs, APIs, and server-to-server integrations. Perplexity does not use these technologies to sell third party ads on our services. Perplexity uses them to measure our ad performance on third party partner websites and to improve our services. If you continue using Perplexity, without adjusting your settings, you are consenting to these technologies.\nDecline optional\nGot it",
+      "screenshot": "perplexity-q1.png",
+      "appears": "Yes",
+      "position": "1",
+      "others": "AAmber Communications LAB; Lemniscate Growth",
+      "summary": "Listed Myntmore first; gave only three names and qualification caveats for the alternatives.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    },
+    {
+      "provider": "Gemini",
+      "question_id": 1,
+      "prompt": "Which agencies in Mumbai help B2B founders get qualified sales meetings through LinkedIn outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "observed_at": "2026-10-30T20:32:08.547Z",
+      "response_url": "https://gemini.google.com/app/1a983431e5410bac",
+      "mode": "Flash-Lite (visible default, signed out)",
+      "guest": true,
+      "status": "complete",
+      "answer": "Here are up to five agencies based in or operating out of Mumbai that specialize in helping B2B founders, executives, and growth teams secure qualified sales meetings through LinkedIn outreach and modern outbound strategies:\n\n1. Myntmore\n\nReason: Headquartered in the Bandra Kurla Complex (BKC) in Mumbai, Myntmore is a B2B lead generation agency specializing in multi-channel outbound. They combine AI-driven execution with human strategy to run targeted ICP prospecting, profile optimization, and personalized connection/message sequences explicitly built to turn LinkedIn into a meeting-booking channel for founders and sales leaders.   \nwww.myntmore.com\n+ 1\n\nSource: Myntmore Official Website   \nwww.myntmore.com\n\n2. The Adroit\n\nReason: Operating out of Mumbai and Navi Mumbai, The Adroit offers B2B LinkedIn marketing services that tie founder personal profile optimization and ghostwritten thought leadership directly with manual, compliant outreach and conversation management to engage target decision-makers.   \nThe Adroit\n\nSource: The Adroit LinkedIn Marketing Services   \nThe Adroit\n\n3. Kology\n\nReason: Kology runs specialized B2B LinkedIn lead generation and outreach campaigns focusing on human-verified research, personalized value-driven connection sequences, and conversation-first messaging (avoiding spammy automation) to land qualified discovery calls and demo bookings for B2B teams.   \nKology\n\nSource: Kology LinkedIn Lead Generation Services   \nKology\n\n4. BrandEar\n\nReason: BrandEar focuses explicitly on B2B brands, executives, and founders (with a regional footprint covering Mumbai and Pune). They bridge personal branding/profile optimization with ethical LinkedIn outreach flows and ABM-style targeting to build a sustainable pipeline of opportunities.   \nbrandear.in\n\nSource: BrandEar LinkedIn Marketing & Thought Leadership\n\n5. Weezly\n\nReason: Weezly operates as a B2B GTM and lead generation agency supporting outbound sales execution, which includes targeted LinkedIn outreach programs tailored for growing companies looking to build predictable meeting pipelines.   \nWeezly\n\nSource: Weezly Lead Generation Agencies in India   \nWeezly\n\nTo explore these agencies further:\nCompare pricing and engagement models for Myntmore and Kology\nReview metrics to track when hiring a LinkedIn outreach agency",
+      "links": [
+        {
+          "text": "Myntmore Official Website",
+          "url": "https://www.google.com/search?q=https://www.mynmore.com/"
+        },
+        {
+          "text": "The Adroit LinkedIn Marketing Services",
+          "url": "https://www.theadroit.in/linkedin-marketing-in-mumbai"
+        },
+        {
+          "text": "Kology LinkedIn Lead Generation Services",
+          "url": "https://www.kology.co/linkedin-lead-generation-services/"
+        },
+        {
+          "text": "BrandEar LinkedIn Marketing & Thought Leadership",
+          "url": "https://brandear.in/services/linkedin-marketingthought-leadership/"
+        },
+        {
+          "text": "Weezly Lead Generation Agencies in India",
+          "url": "https://weezly.com/lead-generation-agencies/india/"
+        }
+      ],
+      "body": "Gemini\nNew chat\nImages\nSign in to save activity\nAbout Gemini\nPricing\nFor Business\nSettings\nSign in\nGet App\nConversation with Gemini\nYou said Which agencies in Mumbai help B2B founders get qualified sales meetings through LinkedIn outreach? P…\n\nWhich agencies in Mumbai help B2B founders get qualified sales meetings through LinkedIn outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\n\nGemini said\n\nHere are up to five agencies based in or operating out of Mumbai that specialize in helping B2B founders, executives, and growth teams secure qualified sales meetings through LinkedIn outreach and modern outbound strategies:\n\n1. Myntmore\n\nReason: Headquartered in the Bandra Kurla Complex (BKC) in Mumbai, Myntmore is a B2B lead generation agency specializing in multi-channel outbound. They combine AI-driven execution with human strategy to run targeted ICP prospecting, profile optimization, and personalized connection/message sequences explicitly built to turn LinkedIn into a meeting-booking channel for founders and sales leaders.   \nwww.myntmore.com\n+ 1\n\nSource: Myntmore Official Website   \nwww.myntmore.com\n\n2. The Adroit\n\nReason: Operating out of Mumbai and Navi Mumbai, The Adroit offers B2B LinkedIn marketing services that tie founder personal profile optimization and ghostwritten thought leadership directly with manual, compliant outreach and conversation management to engage target decision-makers.   \nThe Adroit\n\nSource: The Adroit LinkedIn Marketing Services   \nThe Adroit\n\n3. Kology\n\nReason: Kology runs specialized B2B LinkedIn lead generation and outreach campaigns focusing on human-verified research, personalized value-driven connection sequences, and conversation-first messaging (avoiding spammy automation) to land qualified discovery calls and demo bookings for B2B teams.   \nKology\n\nSource: Kology LinkedIn Lead Generation Services   \nKology\n\n4. BrandEar\n\nReason: BrandEar focuses explicitly on B2B brands, executives, and founders (with a regional footprint covering Mumbai and Pune). They bridge personal branding/profile optimization with ethical LinkedIn outreach flows and ABM-style targeting to build a sustainable pipeline of opportunities.   \nbrandear.in\n\nSource: BrandEar LinkedIn Marketing & Thought Leadership\n\n5. Weezly\n\nReason: Weezly operates as a B2B GTM and lead generation agency supporting outbound sales execution, which includes targeted LinkedIn outreach programs tailored for growing companies looking to build predictable meeting pipelines.   \nWeezly\n\nSource: Weezly Lead Generation Agencies in India   \nWeezly\n\nTo explore these agencies further:\nCompare pricing and engagement models for Myntmore and Kology\nReview metrics to track when hiring a LinkedIn outreach agency\nSign in to connect to Google apps, create images, and more\nSign in\n\n\n\n\nFlash-Lite\n\nGemini is AI and can make mistakes.\n\nSign in",
+      "screenshot": "gemini-q1.png",
+      "appears": "Yes",
+      "position": "1",
+      "others": "The Adroit; Kology; BrandEar; Weezly",
+      "summary": "Listed Myntmore first for Mumbai LinkedIn outreach; one Myntmore source target was misspelled.",
+      "source_note": "The explicit Myntmore link points to a Google search for mynmore.com, not the correct myntmore.com. Recorded as given, not silently corrected."
+    },
+    {
+      "provider": "ChatGPT",
+      "question_id": 2,
+      "prompt": "Which agencies can improve an Indian B2B founder's LinkedIn profile and personal brand to attract business enquiries? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "status": "unavailable",
+      "reason": "ChatGPT browser access challenge prevented a model answer.",
+      "appears": "Not observed",
+      "position": "Unavailable",
+      "others": "No agency answer obtained",
+      "summary": "ChatGPT browser access challenge prevented a model answer.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    },
+    {
+      "provider": "Perplexity",
+      "question_id": 2,
+      "prompt": "Which agencies can improve an Indian B2B founder's LinkedIn profile and personal brand to attract business enquiries? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "observed_at": "2026-10-30T20:28:16.161Z",
+      "response_url": "https://www.perplexity.ai/search/45e73dd0-b73a-4dcb-9e98-17aab9854ce0",
+      "mode": "Search (visible default, signed out; model unspecified)",
+      "guest": true,
+      "status": "unavailable",
+      "answer": "Sign up and repeat your request.",
+      "links": [],
+      "body": "New\n⌃I\nComputer\nAutomations\nArtifacts\nCustomize\nProjects\nNo projects\nRecents\nWhich agencies can improve an Indian B2B founder's LinkedIn profile and personal brand to attract business enquiries? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\nView all\nView plans\nSign In\nAnswer\nLinks\nImages\nShare\n1:58 AM\n\nWhich agencies can improve an Indian B2B founder's LinkedIn profile and personal brand to attract business enquiries? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\n\nFinished\n3s\n\nSign up and repeat your request.\n\nSources\n\n\n\n\nAsk a follow-up\nSearch\nComputer\nModel\nCookie Policy\n\nWe and our partners use cookies, pixels, SDKs, APIs, and server-to-server integrations. Perplexity does not use these technologies to sell third party ads on our services. Perplexity uses them to measure our ad performance on third party partner websites and to improve our services. If you continue using Perplexity, without adjusting your settings, you are consenting to these technologies.\n\nCookie Policy\nWe and our partners use cookies, pixels, SDKs, APIs, and server-to-server integrations. Perplexity does not use these technologies to sell third party ads on our services. Perplexity uses them to measure our ad performance on third party partner websites and to improve our services. If you continue using Perplexity, without adjusting your settings, you are consenting to these technologies.\nDecline optional\nGot it",
+      "screenshot": "perplexity-q2.png",
+      "reason": "Sign-in required; no agency answer was returned.",
+      "appears": "Not observed",
+      "position": "Unavailable",
+      "others": "No agency answer obtained",
+      "summary": "Sign-in required; no agency answer was returned.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    },
+    {
+      "provider": "Gemini",
+      "question_id": 2,
+      "prompt": "Which agencies can improve an Indian B2B founder's LinkedIn profile and personal brand to attract business enquiries? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "observed_at": "2026-10-30T20:32:22.455Z",
+      "response_url": "https://gemini.google.com/app/6e4dd93f7cb0baa4",
+      "mode": "Flash-Lite (visible default, signed out)",
+      "guest": true,
+      "status": "complete",
+      "answer": "For an Indian B2B founder, optimizing a LinkedIn profile and building a personal brand is one of the most effective ways to drive inbound business enquiries, shorten sales cycles, and build trust with enterprise clients.\n\nFive suitable agencies and professional firms in India that specialize in LinkedIn personal branding, founder positioning, and B2B growth include:\n\n1. Ohh My Brand (OMB)\n\nShort Reason: Founded by Bhavik Sarkhedi, Ohh My Brand is a recognized personal branding agency in India specializing in turning entrepreneurs and CXOs into visible industry authorities. They blend SEO-driven content marketing, thought leadership ghostwriting, and LinkedIn profile optimization to help founders generate organic inbound leads.   \nOhh My Brand\n+ 1\n\nSource: Industry reviews and analysis of personal branding firms in India (e.g., curated digital marketing overviews and agency literature).\n\n2. Moris Media\n\nShort Reason: Known widely for its \"Digital Doctors\" methodology, Moris Media acts as a comprehensive personal branding and digital PR agency for startup founders and business leaders. They focus heavily on investor-ready LinkedIn profile overhauls, leadership visibility engines, and content frameworks designed to translate digital authority into measurable business results.   \nMoris Media\n+ 1\n\nSource: Agency service documentation and digital marketing roundups mapping top-tier founder branding providers in India.\n\n3. ROI Hunt\n\nShort Reason: ROI Hunt positions itself explicitly as a performance-driven LinkedIn marketing and personal branding agency tailored for Indian founders, CXOs, and consultants. They combine personal profile architecture with targeted B2B lead generation strategies to ensure that the founder's brand directly impacts business pipelines.   \nROI Hunt\n\nSource: Agency offerings and verified B2B LinkedIn marketing profiles highlighting founder-centric personal branding services in India.\n\n4. The People Company\n\nShort Reason: Operating out of Mumbai, The People Company focuses squarely on executive and leadership personal branding with an emphasis on trust-building. They run aggressive, creative LinkedIn growth and content campaigns tailored to help leaders capture mindshare in competitive B2B landscapes.\n\nSource: Digital branding directories and agency roundups tracking CEO and founder positioning firms in India.\n\n5. Vajra Global\n\nShort Reason: While operating primarily as a broader B2B digital and inbound marketing agency, Vajra Global delivers structured LinkedIn marketing solutions that feature executive profile optimization, thought leadership alignment, and targeted ABM (Account-Based Marketing) campaigns to turn profile views into pipeline conversions.   \nVajra Global\n\nSource: Company service portfolios detailing B2B-focused LinkedIn profile optimization and lead generation operations.   \nVajra Global\n\nNote: Verification status for all five entities has been cross-referenced through active digital marketing landscapes and agency service directories up to 2026. However, founders should evaluate individual portfolios, past case studies, and pricing models directly with these agencies to find a stylistic fit for their specific industry (e.g., SaaS, manufacturing, fintech, or consulting).",
+      "links": [],
+      "body": "Gemini\nNew chat\nImages\nSign in to save activity\nAbout Gemini\nPricing\nFor Business\nSettings\nSign in\nGet App\nConversation with Gemini\nYou said Which agencies can improve an Indian B2B founder's LinkedIn profile and personal brand to attract bu…\n\nWhich agencies can improve an Indian B2B founder's LinkedIn profile and personal brand to attract business enquiries? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\n\nGemini said\n\nFor an Indian B2B founder, optimizing a LinkedIn profile and building a personal brand is one of the most effective ways to drive inbound business enquiries, shorten sales cycles, and build trust with enterprise clients.\n\nFive suitable agencies and professional firms in India that specialize in LinkedIn personal branding, founder positioning, and B2B growth include:\n\n1. Ohh My Brand (OMB)\n\nShort Reason: Founded by Bhavik Sarkhedi, Ohh My Brand is a recognized personal branding agency in India specializing in turning entrepreneurs and CXOs into visible industry authorities. They blend SEO-driven content marketing, thought leadership ghostwriting, and LinkedIn profile optimization to help founders generate organic inbound leads.   \nOhh My Brand\n+ 1\n\nSource: Industry reviews and analysis of personal branding firms in India (e.g., curated digital marketing overviews and agency literature).\n\n2. Moris Media\n\nShort Reason: Known widely for its \"Digital Doctors\" methodology, Moris Media acts as a comprehensive personal branding and digital PR agency for startup founders and business leaders. They focus heavily on investor-ready LinkedIn profile overhauls, leadership visibility engines, and content frameworks designed to translate digital authority into measurable business results.   \nMoris Media\n+ 1\n\nSource: Agency service documentation and digital marketing roundups mapping top-tier founder branding providers in India.\n\n3. ROI Hunt\n\nShort Reason: ROI Hunt positions itself explicitly as a performance-driven LinkedIn marketing and personal branding agency tailored for Indian founders, CXOs, and consultants. They combine personal profile architecture with targeted B2B lead generation strategies to ensure that the founder's brand directly impacts business pipelines.   \nROI Hunt\n\nSource: Agency offerings and verified B2B LinkedIn marketing profiles highlighting founder-centric personal branding services in India.\n\n4. The People Company\n\nShort Reason: Operating out of Mumbai, The People Company focuses squarely on executive and leadership personal branding with an emphasis on trust-building. They run aggressive, creative LinkedIn growth and content campaigns tailored to help leaders capture mindshare in competitive B2B landscapes.\n\nSource: Digital branding directories and agency roundups tracking CEO and founder positioning firms in India.\n\n5. Vajra Global\n\nShort Reason: While operating primarily as a broader B2B digital and inbound marketing agency, Vajra Global delivers structured LinkedIn marketing solutions that feature executive profile optimization, thought leadership alignment, and targeted ABM (Account-Based Marketing) campaigns to turn profile views into pipeline conversions.   \nVajra Global\n\nSource: Company service portfolios detailing B2B-focused LinkedIn profile optimization and lead generation operations.   \nVajra Global\n\nNote: Verification status for all five entities has been cross-referenced through active digital marketing landscapes and agency service directories up to 2026. However, founders should evaluate individual portfolios, past case studies, and pricing models directly with these agencies to find a stylistic fit for their specific industry (e.g., SaaS, manufacturing, fintech, or consulting).\n\nSign in to connect to Google apps, create images, and more\nSign in\n\n\n\n\nFlash-Lite\n\nGemini is AI and can make mistakes.\n\nSign in",
+      "screenshot": "gemini-q2.png",
+      "appears": "No",
+      "position": "Not listed",
+      "others": "Ohh My Brand; Moris Media; ROI Hunt; The People Company; Vajra Global",
+      "summary": "Recommended founder/personal-branding providers without naming Myntmore.",
+      "source_note": "Visible citation labels: Ohh My Brand, Moris Media, ROI Hunt and Vajra Global. The response gives vague source descriptions; no explicit URL anchors were captured in the answer."
+    },
+    {
+      "provider": "ChatGPT",
+      "question_id": 3,
+      "prompt": "Which agencies help Indian B2B SaaS companies set up cold email outreach, including deliverability and lead targeting? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "status": "unavailable",
+      "reason": "ChatGPT browser access challenge prevented a model answer.",
+      "appears": "Not observed",
+      "position": "Unavailable",
+      "others": "No agency answer obtained",
+      "summary": "ChatGPT browser access challenge prevented a model answer.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    },
+    {
+      "provider": "Perplexity",
+      "question_id": 3,
+      "prompt": "Which agencies help Indian B2B SaaS companies set up cold email outreach, including deliverability and lead targeting? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "observed_at": "2026-10-30T20:28:24.879Z",
+      "response_url": "https://www.perplexity.ai/search/0d7a4fd7-f41c-47cf-969a-77fbf7b42f24",
+      "mode": "Search (visible default, signed out; model unspecified)",
+      "guest": true,
+      "status": "unavailable",
+      "answer": "Sign up and repeat your request.",
+      "links": [],
+      "body": "New\n⌃I\nComputer\nAutomations\nArtifacts\nCustomize\nProjects\nNo projects\nRecents\nWhich agencies help Indian B2B SaaS companies set up cold email outreach, including deliverability and lead targeting? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\nView all\nView plans\nSign In\nAnswer\nLinks\nImages\nShare\nDownload Comet\n1:58 AM\n\nWhich agencies help Indian B2B SaaS companies set up cold email outreach, including deliverability and lead targeting? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\n\nFinished\n3s\n\nSign up and repeat your request.\n\nSources\n\n\n\n\nAsk a follow-up\nSearch\nComputer\nModel\nCookie Policy\n\nWe and our partners use cookies, pixels, SDKs, APIs, and server-to-server integrations. Perplexity does not use these technologies to sell third party ads on our services. Perplexity uses them to measure our ad performance on third party partner websites and to improve our services. If you continue using Perplexity, without adjusting your settings, you are consenting to these technologies.\n\nCookie Policy\nWe and our partners use cookies, pixels, SDKs, APIs, and server-to-server integrations. Perplexity does not use these technologies to sell third party ads on our services. Perplexity uses them to measure our ad performance on third party partner websites and to improve our services. If you continue using Perplexity, without adjusting your settings, you are consenting to these technologies.\nDecline optional\nGot it\nSign up below to unlock the full potential of Perplexity\nBack home\nContinue with Google\nContinue with Apple\nContinue with email\nSingle sign-on (SSO)\nBy continuing, you agree to the\nPerplexity Terms of Service and Privacy Notice",
+      "screenshot": "perplexity-q3.png",
+      "reason": "Sign-in required; no agency answer was returned.",
+      "appears": "Not observed",
+      "position": "Unavailable",
+      "others": "No agency answer obtained",
+      "summary": "Sign-in required; no agency answer was returned.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    },
+    {
+      "provider": "Gemini",
+      "question_id": 3,
+      "prompt": "Which agencies help Indian B2B SaaS companies set up cold email outreach, including deliverability and lead targeting? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "observed_at": "2026-10-30T20:32:42.357Z",
+      "response_url": "https://gemini.google.com/app/e24f7230786ae9fa",
+      "mode": "Flash-Lite (visible default, signed out)",
+      "guest": true,
+      "status": "complete",
+      "answer": "When scaling a B2B SaaS pipeline through cold email, partnering with a specialized outbound agency helps manage complex technical parameters—such as secondary domain provisioning, strict inbox warm-ups, SPF/DKIM/DMARC alignment, and precise Ideal Customer Profile (ICP) lead targeting.\n\nBased on current industry research and market tracking for agencies operating in or catering to the Indian B2B tech ecosystem, here are five suitable agencies:\n\n1. Modern Inbound\n\nShort Reason: Run specifically with a focus on tech and software startups, this agency handles hands-off, research-led cold email outreach. They explicitly provision separate sending domains, implement 14-day mailbox warm-ups, and focus on hyper-personalized sequence writing tailored for B2B SaaS teams (Modern Inbound, 2026).\n\nSource Used: Modern Inbound. (2026). Best Cold Email Agencies in India (2026): Prices & Fit. https://moderninbound.com/blog/best-cold-outreach-agencies-in-india\n\n2. Leadle\n\nShort Reason: Founded in 2016 and based in Chennai, Leadle specializes in signal-led outbound combined with Revenue Operations (RevOps). They construct targeted prospecting and technical infrastructure setups tailored for growth-stage B2B SaaS companies, allowing internal teams to either take over the system later or run it as a managed service (Modern Inbound, 2026; SalesCaptain, 2026).\n\nSource Used: SalesCaptain. (2026). Top Cold Outreach Agencies in India. https://www.salescaptain.io/cold-outreach-agencies/best-cold-outreach-agencies-in-india; Modern Inbound. (2026). Best Cold Email Agencies in India (2026): Prices & Fit. https://moderninbound.com/blog/best-cold-outreach-agencies-in-india\n\n3. Kology\n\nShort Reason: Kology provides end-to-end B2B cold email lead generation with a heavy emphasis on technical infrastructure. Their scope specifically covers manual lead list research, 3-step email verification, and precise deliverability configuration including technical domain setup (SPF, DKIM, DMARC) and automated mailbox warm-up (Kology, 2026).\n\nSource Used: Kology. (2026). Cold Email Outreach Services | B2B Email Lead Gen. https://www.kology.co/cold-email-outreach-services/\n\n4. SalesAladin\n\nShort Reason: Operating out of the Delhi NCR region, SalesAladin builds targeted outbound systems for tech and B2B product companies. They assist with data enrichment, multi-channel or email-centric sequence mapping, and aligning messaging with specific software buyer personas.\n\nSource Used: Modern Inbound. (2026). Best Cold Email Agencies in India (2026): Prices & Fit. https://moderninbound.com/blog/best-cold-outreach-agencies-in-india\n\n5. Blueberg\n\nShort Reason: Blueberg manages end-to-end B2B lead generation systems that feature explicit deliverability architecture. They configure secondary domains and inboxes, run domain warm-ups, monitor sending volumes, handle SPF/DKIM compliance, and treat ICP mapping as an iterative testing framework rather than a static brief (Blueberg, 2026).\n\nSource Used: Blueberg. (2026). B2B Lead Generation Services. https://www.blueberg.in/lead-gen\n\nVerification Note\n\nWhile these agencies publicly document services covering cold email infrastructure, deliverability configuration, and B2B lead targeting, B2B SaaS companies should always request verifiable case studies involving similar Average Contract Values (ACVs) and target geographies (e.g., North America vs. domestic India) before signing an agreement.",
+      "links": [
+        {
+          "text": "https://moderninbound.com/blog/best-cold-outreach-agencies-in-india",
+          "url": "https://www.google.com/search?q=https://moderninbound.com/blog/best-cold-outreach-agencies-in-india"
+        },
+        {
+          "text": "https://www.salescaptain.io/cold-outreach-agencies/best-cold-outreach-agencies-in-india",
+          "url": "https://www.salescaptain.io/cold-outreach-agencies/best-cold-outreach-agencies-in-india"
+        },
+        {
+          "text": "https://moderninbound.com/blog/best-cold-outreach-agencies-in-india",
+          "url": "https://www.google.com/search?q=https://moderninbound.com/blog/best-cold-outreach-agencies-in-india"
+        },
+        {
+          "text": "https://www.kology.co/cold-email-outreach-services/",
+          "url": "https://www.kology.co/cold-email-outreach-services/"
+        },
+        {
+          "text": "https://moderninbound.com/blog/best-cold-outreach-agencies-in-india",
+          "url": "https://www.google.com/search?q=https://moderninbound.com/blog/best-cold-outreach-agencies-in-india"
+        },
+        {
+          "text": "https://www.blueberg.in/lead-gen",
+          "url": "https://www.blueberg.in/lead-gen"
+        }
+      ],
+      "body": "Gemini\nNew chat\nImages\nSign in to save activity\nAbout Gemini\nPricing\nFor Business\nSettings\nSign in\nGet App\nConversation with Gemini\nYou said Which agencies help Indian B2B SaaS companies set up cold email outreach, including deliverability a…\n\nWhich agencies help Indian B2B SaaS companies set up cold email outreach, including deliverability and lead targeting? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\n\nGemini said\n\nWhen scaling a B2B SaaS pipeline through cold email, partnering with a specialized outbound agency helps manage complex technical parameters—such as secondary domain provisioning, strict inbox warm-ups, SPF/DKIM/DMARC alignment, and precise Ideal Customer Profile (ICP) lead targeting.\n\nBased on current industry research and market tracking for agencies operating in or catering to the Indian B2B tech ecosystem, here are five suitable agencies:\n\n1. Modern Inbound\n\nShort Reason: Run specifically with a focus on tech and software startups, this agency handles hands-off, research-led cold email outreach. They explicitly provision separate sending domains, implement 14-day mailbox warm-ups, and focus on hyper-personalized sequence writing tailored for B2B SaaS teams (Modern Inbound, 2026).\n\nSource Used: Modern Inbound. (2026). Best Cold Email Agencies in India (2026): Prices & Fit. https://moderninbound.com/blog/best-cold-outreach-agencies-in-india\n\n2. Leadle\n\nShort Reason: Founded in 2016 and based in Chennai, Leadle specializes in signal-led outbound combined with Revenue Operations (RevOps). They construct targeted prospecting and technical infrastructure setups tailored for growth-stage B2B SaaS companies, allowing internal teams to either take over the system later or run it as a managed service (Modern Inbound, 2026; SalesCaptain, 2026).\n\nSource Used: SalesCaptain. (2026). Top Cold Outreach Agencies in India. https://www.salescaptain.io/cold-outreach-agencies/best-cold-outreach-agencies-in-india; Modern Inbound. (2026). Best Cold Email Agencies in India (2026): Prices & Fit. https://moderninbound.com/blog/best-cold-outreach-agencies-in-india\n\n3. Kology\n\nShort Reason: Kology provides end-to-end B2B cold email lead generation with a heavy emphasis on technical infrastructure. Their scope specifically covers manual lead list research, 3-step email verification, and precise deliverability configuration including technical domain setup (SPF, DKIM, DMARC) and automated mailbox warm-up (Kology, 2026).\n\nSource Used: Kology. (2026). Cold Email Outreach Services | B2B Email Lead Gen. https://www.kology.co/cold-email-outreach-services/\n\n4. SalesAladin\n\nShort Reason: Operating out of the Delhi NCR region, SalesAladin builds targeted outbound systems for tech and B2B product companies. They assist with data enrichment, multi-channel or email-centric sequence mapping, and aligning messaging with specific software buyer personas.\n\nSource Used: Modern Inbound. (2026). Best Cold Email Agencies in India (2026): Prices & Fit. https://moderninbound.com/blog/best-cold-outreach-agencies-in-india\n\n5. Blueberg\n\nShort Reason: Blueberg manages end-to-end B2B lead generation systems that feature explicit deliverability architecture. They configure secondary domains and inboxes, run domain warm-ups, monitor sending volumes, handle SPF/DKIM compliance, and treat ICP mapping as an iterative testing framework rather than a static brief (Blueberg, 2026).\n\nSource Used: Blueberg. (2026). B2B Lead Generation Services. https://www.blueberg.in/lead-gen\n\nVerification Note\n\nWhile these agencies publicly document services covering cold email infrastructure, deliverability configuration, and B2B lead targeting, B2B SaaS companies should always request verifiable case studies involving similar Average Contract Values (ACVs) and target geographies (e.g., North America vs. domestic India) before signing an agreement.\n\nSign in to connect to Google apps, create images, and more\nSign in\n\n\n\n\nFlash-Lite\n\nGemini is AI and can make mistakes.\n\nSign in",
+      "screenshot": "gemini-q3.png",
+      "appears": "No",
+      "position": "Not listed",
+      "others": "Modern Inbound; Leadle; Kology; SalesAladin; Blueberg",
+      "summary": "Focused on cold-email infrastructure, warm-up, deliverability and targeting; Myntmore was absent.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    },
+    {
+      "provider": "ChatGPT",
+      "question_id": 4,
+      "prompt": "Which agencies help Indian manufacturers and exporters find overseas B2B buyers using LinkedIn and email outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "status": "unavailable",
+      "reason": "ChatGPT browser access challenge prevented a model answer.",
+      "appears": "Not observed",
+      "position": "Unavailable",
+      "others": "No agency answer obtained",
+      "summary": "ChatGPT browser access challenge prevented a model answer.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    },
+    {
+      "provider": "Perplexity",
+      "question_id": 4,
+      "prompt": "Which agencies help Indian manufacturers and exporters find overseas B2B buyers using LinkedIn and email outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "observed_at": "2026-10-30T20:28:33.474Z",
+      "response_url": "https://www.perplexity.ai/search/470f1b4d-58ea-4fbe-b659-9a5652a8aefc",
+      "mode": "Search (visible default, signed out; model unspecified)",
+      "guest": true,
+      "status": "unavailable",
+      "answer": "Sign up and repeat your request.",
+      "links": [],
+      "body": "New\n⌃I\nComputer\nAutomations\nArtifacts\nCustomize\nProjects\nNo projects\nRecents\nWhich agencies help Indian manufacturers and exporters find overseas B2B buyers using LinkedIn and email outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\nView all\nView plans\nSign In\nAnswer\nLinks\nImages\nShare\nDownload Comet\n1:58 AM\n\nWhich agencies help Indian manufacturers and exporters find overseas B2B buyers using LinkedIn and email outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\n\nFinished\n3s\n\nSign up and repeat your request.\n\nSources\n\n\n\n\nAsk a follow-up\nSearch\nComputer\nModel\nCookie Policy\n\nWe and our partners use cookies, pixels, SDKs, APIs, and server-to-server integrations. Perplexity does not use these technologies to sell third party ads on our services. Perplexity uses them to measure our ad performance on third party partner websites and to improve our services. If you continue using Perplexity, without adjusting your settings, you are consenting to these technologies.\n\nCookie Policy\nWe and our partners use cookies, pixels, SDKs, APIs, and server-to-server integrations. Perplexity does not use these technologies to sell third party ads on our services. Perplexity uses them to measure our ad performance on third party partner websites and to improve our services. If you continue using Perplexity, without adjusting your settings, you are consenting to these technologies.\nDecline optional\nGot it\nSign in to continue using Perplexity\nBack home\nContinue with Google\nContinue with Apple\nContinue with email\nSingle sign-on (SSO)\nBy continuing, you agree to the\nPerplexity Terms of Service and Privacy Notice",
+      "screenshot": "perplexity-q4.png",
+      "reason": "Sign-in required; no agency answer was returned.",
+      "appears": "Not observed",
+      "position": "Unavailable",
+      "others": "No agency answer obtained",
+      "summary": "Sign-in required; no agency answer was returned.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    },
+    {
+      "provider": "Gemini",
+      "question_id": 4,
+      "prompt": "Which agencies help Indian manufacturers and exporters find overseas B2B buyers using LinkedIn and email outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "observed_at": "2026-10-30T20:32:55.813Z",
+      "response_url": "https://gemini.google.com/app/f5eea58588452ff2",
+      "mode": "Flash-Lite (visible default, signed out)",
+      "guest": true,
+      "status": "complete",
+      "answer": "Here are four specialized agencies that help Indian manufacturers and exporters connect with overseas B2B buyers using LinkedIn, email outreach, and multi-channel strategies:\n\n1. Gaa-tha\n\nShort Reason: Specifically caters to Indian manufacturers, packaging makers, machinery suppliers, and bulk exporters. They set up end-to-end international export sales engines combining LinkedIn outreach, targeted email sequences, Google Search intent ads, and B2B marketplace optimization (like TradeIndia and IndiaMART) to drive inquiries from global buyers.\n\nSource: Gaa-tha - B2B & Export Lead Generation Services   \ngaa-tha\n\n2. Nebula (Nebula Tech)\n\nShort Reason: Focuses on building export-ready digital strategies for Indian B2B manufacturers looking to expand into the USA, Europe, the Middle East, and Southeast Asia. They run precision LinkedIn and Google paid campaigns, B2B lead generation funnels, and multi-region SEO to capture RFQs from international distributors and OEM procurement teams.   \nwww.nebulatech.in\n+ 1\n\nSource: Nebula Tech - Digital Marketing for Export-Focused Manufacturers   \nNebula Personalization Tech Solutions Pvt. Ltd.\n\n3. Kology\n\nShort Reason: Operates as a dedicated B2B lead generation agency specializing in human-verified LinkedIn prospecting and multi-channel outreach (combining LinkedIn, cold email, and warm calling). They help companies define overseas Ideal Customer Profiles (ICPs) and manage conversation-first sequences to book meetings with international decision-makers.\n\nSource: Kology - LinkedIn Lead Generation Services   \nKology\n\n4. SalesCaptain\n\nShort Reason: Functions as a B2B outbound sales agency that assists businesses in scaling export pipelines through cold email infrastructure, AI/Clay automation, CRM integrations, and LinkedIn marketing campaigns aimed at reaching global decision-makers.   \nsalescaptain.io\n\nSource: SalesCaptain - Top Cold Outreach Agencies in India   \nSalesCaptain\n\n(Note: While several general digital marketing or local SEO agencies exist in India, the four listed above explicitly highlight B2B export workflows, manufacturing lead generation, and/or combined LinkedIn and email outbound capabilities.)\n\nWant me to compare the pricing models and onboarding timelines of these export agencies?\nYes",
+      "links": [
+        {
+          "text": "Gaa-tha - B2B & Export Lead Generation Services",
+          "url": "https://gaa-tha.com/services/b2b-lead-generation"
+        },
+        {
+          "text": "Nebula Tech - Digital Marketing for Export-Focused Manufacturers",
+          "url": "https://www.nebulatech.in/digital-marketing-for-manufacturing-exporters"
+        },
+        {
+          "text": "Kology - LinkedIn Lead Generation Services",
+          "url": "https://www.kology.co/linkedin-lead-generation-services/"
+        },
+        {
+          "text": "SalesCaptain - Top Cold Outreach Agencies in India",
+          "url": "https://www.salescaptain.io/cold-outreach-agencies/best-cold-outreach-agencies-in-india"
+        }
+      ],
+      "body": "Gemini\nNew chat\nImages\nSign in to save activity\nAbout Gemini\nPricing\nFor Business\nSettings\nSign in\nGet App\nConversation with Gemini\nYou said Which agencies help Indian manufacturers and exporters find overseas B2B buyers using LinkedIn and e…\n\nWhich agencies help Indian manufacturers and exporters find overseas B2B buyers using LinkedIn and email outreach? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\n\nGemini said\n\nHere are four specialized agencies that help Indian manufacturers and exporters connect with overseas B2B buyers using LinkedIn, email outreach, and multi-channel strategies:\n\n1. Gaa-tha\n\nShort Reason: Specifically caters to Indian manufacturers, packaging makers, machinery suppliers, and bulk exporters. They set up end-to-end international export sales engines combining LinkedIn outreach, targeted email sequences, Google Search intent ads, and B2B marketplace optimization (like TradeIndia and IndiaMART) to drive inquiries from global buyers.\n\nSource: Gaa-tha - B2B & Export Lead Generation Services   \ngaa-tha\n\n2. Nebula (Nebula Tech)\n\nShort Reason: Focuses on building export-ready digital strategies for Indian B2B manufacturers looking to expand into the USA, Europe, the Middle East, and Southeast Asia. They run precision LinkedIn and Google paid campaigns, B2B lead generation funnels, and multi-region SEO to capture RFQs from international distributors and OEM procurement teams.   \nwww.nebulatech.in\n+ 1\n\nSource: Nebula Tech - Digital Marketing for Export-Focused Manufacturers   \nNebula Personalization Tech Solutions Pvt. Ltd.\n\n3. Kology\n\nShort Reason: Operates as a dedicated B2B lead generation agency specializing in human-verified LinkedIn prospecting and multi-channel outreach (combining LinkedIn, cold email, and warm calling). They help companies define overseas Ideal Customer Profiles (ICPs) and manage conversation-first sequences to book meetings with international decision-makers.\n\nSource: Kology - LinkedIn Lead Generation Services   \nKology\n\n4. SalesCaptain\n\nShort Reason: Functions as a B2B outbound sales agency that assists businesses in scaling export pipelines through cold email infrastructure, AI/Clay automation, CRM integrations, and LinkedIn marketing campaigns aimed at reaching global decision-makers.   \nsalescaptain.io\n\nSource: SalesCaptain - Top Cold Outreach Agencies in India   \nSalesCaptain\n\n(Note: While several general digital marketing or local SEO agencies exist in India, the four listed above explicitly highlight B2B export workflows, manufacturing lead generation, and/or combined LinkedIn and email outbound capabilities.)\n\nWant me to compare the pricing models and onboarding timelines of these export agencies?\nYes\nSign in to connect to Google apps, create images, and more\nSign in\n\n\n\n\nFlash-Lite\n\nGemini is AI and can make mistakes.\n\nSign in",
+      "screenshot": "gemini-q4.png",
+      "appears": "No",
+      "position": "Not listed",
+      "others": "Gaa-tha; Nebula; Kology; SalesCaptain",
+      "summary": "Named four export/B2B outreach providers; did not include Myntmore.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    },
+    {
+      "provider": "ChatGPT",
+      "question_id": 5,
+      "prompt": "Which agencies in Mumbai build AI-powered lead generation and follow-up automation connected to Zoho CRM? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "status": "unavailable",
+      "reason": "ChatGPT browser access challenge prevented a model answer.",
+      "appears": "Not observed",
+      "position": "Unavailable",
+      "others": "No agency answer obtained",
+      "summary": "ChatGPT browser access challenge prevented a model answer.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    },
+    {
+      "provider": "Perplexity",
+      "question_id": 5,
+      "prompt": "Which agencies in Mumbai build AI-powered lead generation and follow-up automation connected to Zoho CRM? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "observed_at": "2026-10-30T20:28:40.807Z",
+      "response_url": "https://www.perplexity.ai/search/1e20a27b-bf72-4288-9f38-8fe450ddf138",
+      "mode": "Search (visible default, signed out; model unspecified)",
+      "guest": true,
+      "status": "unavailable",
+      "answer": "Sign up and repeat your request.",
+      "links": [],
+      "body": "New\n⌃I\nComputer\nAutomations\nArtifacts\nCustomize\nProjects\nNo projects\nRecents\nWhich agencies in Mumbai build AI-powered lead generation and follow-up automation connected to Zoho CRM? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\nView all\nView plans\nSign In\nAnswer\nLinks\nImages\nShare\nDownload Comet\n1:58 AM\n\nWhich agencies in Mumbai build AI-powered lead generation and follow-up automation connected to Zoho CRM? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\n\nFinished\n3s\n\nSign up and repeat your request.\n\nSources\n\n\n\n\nAsk a follow-up\nSearch\nComputer\nModel\nCookie Policy\n\nWe and our partners use cookies, pixels, SDKs, APIs, and server-to-server integrations. Perplexity does not use these technologies to sell third party ads on our services. Perplexity uses them to measure our ad performance on third party partner websites and to improve our services. If you continue using Perplexity, without adjusting your settings, you are consenting to these technologies.\n\nCookie Policy\nWe and our partners use cookies, pixels, SDKs, APIs, and server-to-server integrations. Perplexity does not use these technologies to sell third party ads on our services. Perplexity uses them to measure our ad performance on third party partner websites and to improve our services. If you continue using Perplexity, without adjusting your settings, you are consenting to these technologies.\nDecline optional\nGot it\nSign in to continue using Perplexity\nBack home\nContinue with Google\nContinue with Apple\nContinue with email\nSingle sign-on (SSO)\nBy continuing, you agree to the\nPerplexity Terms of Service and Privacy Notice",
+      "screenshot": "perplexity-q5.png",
+      "reason": "Sign-in required; no agency answer was returned.",
+      "appears": "Not observed",
+      "position": "Unavailable",
+      "others": "No agency answer obtained",
+      "summary": "Sign-in required; no agency answer was returned.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    },
+    {
+      "provider": "Gemini",
+      "question_id": 5,
+      "prompt": "Which agencies in Mumbai build AI-powered lead generation and follow-up automation connected to Zoho CRM? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.",
+      "observed_at": "2026-10-30T20:33:16.237Z",
+      "response_url": "https://gemini.google.com/app/b128bb112f33ea0d",
+      "mode": "Flash-Lite (visible default, signed out)",
+      "guest": true,
+      "status": "complete",
+      "answer": "Several specialized agencies operating in or near Mumbai design AI-powered lead generation and follow-up automation connected to Zoho CRM. Five suitable agencies that provide these capabilities include:\n\n1. Visiosoft Solutions\n\nOverview: A Mumbai-based AI automation and digital solutions agency.   \nVisiosoft Solutions\n\nReason for Suitability: They specialize in building custom AI-powered workflows, AI chat/voice agents, and intelligent lead qualification systems that integrate directly with CRMs like Zoho, HubSpot, and Salesforce. Their core services include automated lead routing, CRM-WhatsApp sync, and multi-channel follow-up automation.   \nVisiosoft Solutions\n+ 1\n\nSource: Visiosoft Solutions Official Website (visiosoftsolutions.com/ai).   \nVisiosoft Solutions\n\n2. Tech Magify LLP\n\nOverview: A certified Zoho CRM implementation and partner agency with a physical presence in Mumbai (Dadar East).   \nTech Magify LLP\n\nReason for Suitability: They focus on end-to-end Zoho CRM setups, automated lead capture (from web forms, ad campaigns, and social channels), rule-based lead routing, lead scoring, and automated sales pipeline follow-up sequences using Zoho's native capabilities, Deluge, and APIs.   \nTech Magify LLP\n\nSource: Tech Magify LLP Official Website (techmagify.com).\n\n3. Codelattice\n\nOverview: A prominent Zoho Authorized Partner with an active operational footprint in Mumbai.   \nCodelattice\n\nReason for Suitability: They provide custom CRM deployments, automated lead tracking, and process optimization workflows. They specialize in connecting Zoho CRM with external communication pipelines and marketing apps to automate routine tasks such as lead assignments and follow-up scheduling.   \nCodelattice\n\nSource: Codelattice Official Website (codelattice.com).\n\n4. GInfomedia\n\nOverview: An AI automation and software development company with a strong service delivery presence catering to businesses in India.   \nAI Chatbot & Workflow Automation\n\nReason for Suitability: They build autonomous AI agents, conversational RAG-based chatbots, and voice AI systems configured to link seamlessly with existing enterprise databases and CRM platforms to handle inbound lead capture and nurturing.   \nAI Chatbot & Workflow Automation\n\nSource: GInfomedia Official Website (ginfomedia.in).   \nAI Chatbot & Workflow Automation\n\n5. Infobyd\n\nOverview: A Zoho Advanced Partner servicing enterprises across Maharashtra and major urban hubs including Mumbai.   \nInfobyd\n\nReason for Suitability: They specialize in setting up Zoho ecosystems (CRM, Creator, Books) for real estate, trading, and service businesses—automating enquiry ingestion from external portals, website forms, and WhatsApp directly into structured Zoho CRM pipelines with automated task and follow-up alerts.\n\nSource: Infobyd Official Website (infobyd.com).",
+      "links": [
+        {
+          "text": "visiosoftsolutions.com/ai",
+          "url": "https://visiosoftsolutions.com/ai"
+        },
+        {
+          "text": "techmagify.com",
+          "url": "https://www.google.com/search?q=https://www.techmagify.com/techmagify-01/zoho-crm-partners-in-mumbai.php"
+        },
+        {
+          "text": "codelattice.com",
+          "url": "https://www.codelattice.com/zoho-crm-partner-mumbai"
+        },
+        {
+          "text": "ginfomedia.in",
+          "url": "https://ginfomedia.in/ai-automation-services/"
+        },
+        {
+          "text": "infobyd.com",
+          "url": "https://www.google.com/search?q=https://www.infobyd.com/zoho-crm-partner-mumbai"
+        }
+      ],
+      "body": "Gemini\nNew chat\nImages\nSign in to save activity\nAbout Gemini\nPricing\nFor Business\nSettings\nSign in\nGet App\nConversation with Gemini\nYou said Which agencies in Mumbai build AI-powered lead generation and follow-up automation connected to Zoho…\n\nWhich agencies in Mumbai build AI-powered lead generation and follow-up automation connected to Zoho CRM? Please name up to five suitable agencies, give a short reason for each, and cite the sources you used. If you cannot verify an agency, say so.\n\nGemini said\n\nSeveral specialized agencies operating in or near Mumbai design AI-powered lead generation and follow-up automation connected to Zoho CRM. Five suitable agencies that provide these capabilities include:\n\n1. Visiosoft Solutions\n\nOverview: A Mumbai-based AI automation and digital solutions agency.   \nVisiosoft Solutions\n\nReason for Suitability: They specialize in building custom AI-powered workflows, AI chat/voice agents, and intelligent lead qualification systems that integrate directly with CRMs like Zoho, HubSpot, and Salesforce. Their core services include automated lead routing, CRM-WhatsApp sync, and multi-channel follow-up automation.   \nVisiosoft Solutions\n+ 1\n\nSource: Visiosoft Solutions Official Website (visiosoftsolutions.com/ai).   \nVisiosoft Solutions\n\n2. Tech Magify LLP\n\nOverview: A certified Zoho CRM implementation and partner agency with a physical presence in Mumbai (Dadar East).   \nTech Magify LLP\n\nReason for Suitability: They focus on end-to-end Zoho CRM setups, automated lead capture (from web forms, ad campaigns, and social channels), rule-based lead routing, lead scoring, and automated sales pipeline follow-up sequences using Zoho's native capabilities, Deluge, and APIs.   \nTech Magify LLP\n\nSource: Tech Magify LLP Official Website (techmagify.com).\n\n3. Codelattice\n\nOverview: A prominent Zoho Authorized Partner with an active operational footprint in Mumbai.   \nCodelattice\n\nReason for Suitability: They provide custom CRM deployments, automated lead tracking, and process optimization workflows. They specialize in connecting Zoho CRM with external communication pipelines and marketing apps to automate routine tasks such as lead assignments and follow-up scheduling.   \nCodelattice\n\nSource: Codelattice Official Website (codelattice.com).\n\n4. GInfomedia\n\nOverview: An AI automation and software development company with a strong service delivery presence catering to businesses in India.   \nAI Chatbot & Workflow Automation\n\nReason for Suitability: They build autonomous AI agents, conversational RAG-based chatbots, and voice AI systems configured to link seamlessly with existing enterprise databases and CRM platforms to handle inbound lead capture and nurturing.   \nAI Chatbot & Workflow Automation\n\nSource: GInfomedia Official Website (ginfomedia.in).   \nAI Chatbot & Workflow Automation\n\n5. Infobyd\n\nOverview: A Zoho Advanced Partner servicing enterprises across Maharashtra and major urban hubs including Mumbai.   \nInfobyd\n\nReason for Suitability: They specialize in setting up Zoho ecosystems (CRM, Creator, Books) for real estate, trading, and service businesses—automating enquiry ingestion from external portals, website forms, and WhatsApp directly into structured Zoho CRM pipelines with automated task and follow-up alerts.\n\nSource: Infobyd Official Website (infobyd.com).\n\nSign in to connect to Google apps, create images, and more\nSign in\n\n\n\n\nFlash-Lite\n\nGemini is AI and can make mistakes.\n\nSign in\nSearching the web",
+      "screenshot": "gemini-q5.png",
+      "appears": "No",
+      "position": "Not listed",
+      "others": "Visiosoft Solutions; Tech Magify LLP; Codelattice; GInfomedia; Infobyd",
+      "summary": "Recommended AI automation and Zoho implementation providers; Myntmore was absent.",
+      "source_note": "URLs are recorded as the AI provided them, including search-wrapper links; claims are not independently endorsed."
+    }
+  ],
+  "website_changes_status": "Provisional, based on the six completed answers and current first-party site checks; finalise after the other nine runs.",
+  "website_changes": [
+    {
+      "id": 1,
+      "change": "Improve existing founder-branding, SaaS cold-email and exporter pages with short question-matched answers, clear service scope and links to the relevant case studies.",
+      "why": "Gemini omitted Myntmore for Q2?Q4 while listing specialist providers. Those pages already exist; improve their specific, sourceable answers instead of creating duplicate pages.",
+      "questions": "Q2, Q3, Q4"
+    },
+    {
+      "id": 2,
+      "change": "If this is a client service Myntmore offers, add a Zoho-specific automation walkthrough linked from AI Lead Generation, with a redacted example, integration flow and failure/retry ownership.",
+      "why": "Gemini Q5 named implementation providers with explicit Zoho pages. The current AI Lead Generation page does not mention Zoho.",
+      "questions": "Q5"
+    },
+    {
+      "id": 3,
+      "change": "Strengthen existing case-study proof with dates, baselines, client-approved attribution or independent verification, and connect it to the buyer guide and service pages.",
+      "why": "Q1 and Q3 relied on directories/competitor roundups. The current founder case study uses an anonymous client description; more checkable evidence could support citation.",
+      "questions": "Q1, Q2, Q3, Q4"
+    }
+  ],
+  "site_pages_checked": [
+    "https://www.myntmore.com/services/personal-branding",
+    "https://www.myntmore.com/services/cold-email",
+    "https://www.myntmore.com/services/ai-lead-generation",
+    "https://www.myntmore.com/case-studies/founder-personal-brand-linkedin",
+    "https://www.myntmore.com/resources/guides/how-to-choose-an-outbound-agency",
+    "https://www.myntmore.com/lp/manufacturers-exporters",
+    "https://www.myntmore.com/lp/saas-founders"
+  ]
+}
