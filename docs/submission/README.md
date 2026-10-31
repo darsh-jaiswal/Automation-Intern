@@ -6,7 +6,12 @@
 - [Task 3 one-page written answer](../task3/Task_3_Written_Answers.pdf)
 - [Public-release security review](SECURITY_REVIEW.md)
 
-The original assignment template is filled with the Task 1 rubric, answers to the Task 1 and Task 2 subquestions, Task 3a answer, all 15 Task 3b observations, three website changes, live app and repository links. **The candidate's Loom recording and URL remain to be added.** The assignment's resource video is not the candidate's submission video. No submission email has been sent.
+The original assignment template is filled with the Task 1 rubric, answers to the Task 1 and Task 2 subquestions, Task 3a answer, all 15 Task 3b observations, three website changes, live app and repository links. Both candidate-supplied Loom video links are included. The assignment's resource video is not the candidate's submission video. No submission email has been sent.
+
+## Loom videos
+
+1. https://www.loom.com/share/54cf4ab34cab482083928aebe413aa01
+2. https://www.loom.com/share/627c6e12bc254cd0b343fff8f97bc6d6
 
 ## Supplied screenshots
 

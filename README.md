@@ -4,7 +4,7 @@ Myntmore Round 2 by Darsh Jaiswal: a draft-only follow-up engine, a deployed Lin
 
 ## Submission document
 
-The [filled assignment PDF and editable Word document](docs/submission/) include answers to all three tasks and the 11 supplied explanation screenshots below their matching subquestions. The live Vercel URL and GitHub URL are included. **The candidate's Loom recording and share link remain to be added.** See the [public-release security review](docs/submission/SECURITY_REVIEW.md).
+The [filled assignment PDF and editable Word document](docs/submission/) include answers to all three tasks and the 11 supplied explanation screenshots below their matching subquestions. The live Vercel URL and GitHub URL are included. Both candidate-supplied Loom videos are linked in the submission document. See the [public-release security review](docs/submission/SECURITY_REVIEW.md).
 
 ## Task 2: live Hook Grader
 
@@ -84,7 +84,7 @@ Each draft must be under 120 words including subject, contain the approved call 
 
 `npm run status` reports credential presence and, when connected, current database counts. Credential presence alone is not integration verification. The dashboard shows processing and CRM status separately.
 
-Task 2 is in `hook-grader/`. [Task 3 is complete](docs/task3/README.md): a one-page written answer, all **15 real AI answers**, original screenshots, and three website recommendations. The filled submission document is in `docs/submission/`; the user's camera-on Loom recording and share link remain. Three sourced manual company-enrichment examples are included in `docs/Company_Enrichment_Examples.md`; automatic matching/refresh is not implemented. The notes include limitations. Task 1's original verification is in `docs/VERIFICATION.md`; Task 2's live evidence is recorded separately.
+Task 2 is in `hook-grader/`. [Task 3 is complete](docs/task3/README.md): a one-page written answer, all **15 real AI answers**, original screenshots, and three website recommendations. The filled submission document is in `docs/submission/`; both candidate-supplied Loom video links are included. Three sourced manual company-enrichment examples are included in `docs/Company_Enrichment_Examples.md`; automatic matching/refresh is not implemented. The notes include limitations. Task 1's original verification is in `docs/VERIFICATION.md`; Task 2's live evidence is recorded separately.
 
 [Combined Loom notes for all three tasks](docs/Loom_Notes_All_Tasks_Darsh.docx) include a suggested five-minute script and detailed preparation notes. `npm run notes` generates this single document; separate per-task copies have been retired.
 

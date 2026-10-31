@@ -16,4 +16,4 @@ Checked 31 October 2026 IST before changing repository visibility. No credential
 
 No email or external message was sent during preparation. No new paid AI generation was needed to build the submission or run these checks. The local worker, n8n and delivery relay must stay online for queued sessions to progress; full public production hosting and stronger abuse protection remain future work. Human review is required before using AI drafts.
 
-The candidate's name, contact email, fictional sample data and requested screenshots are intentional submission content. The Loom recording is not yet included and needs its own credential check before sharing.
+The candidate's name, contact email, fictional sample data and requested screenshots are intentional submission content. The two candidate-supplied Loom links were added later to the submission. The repository/file scan does not inspect the audiovisual content of those videos.
